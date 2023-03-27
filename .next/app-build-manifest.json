@@ -1,0 +1,69 @@
+{
+  "pages": {
+    "/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/page.css",
+      "static/chunks/app/page.js"
+    ],
+    "/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/layout.css",
+      "static/chunks/app/layout.js"
+    ],
+    "/[villaDetails]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/[villaDetails]/page.css",
+      "static/chunks/app/[villaDetails]/page.js"
+    ],
+    "/villalar/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/villalar/page.css",
+      "static/chunks/app/villalar/page.js"
+    ],
+    "/dolandiricilara-dikkat/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/dolandiricilara-dikkat/page.js"
+    ],
+    "/villalar/[slug]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/villalar/[slug]/page.css",
+      "static/chunks/app/villalar/[slug]/page.js"
+    ],
+    "/iletisim/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/iletisim/page.js"
+    ],
+    "/kiralama-sartlari/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/kiralama-sartlari/page.js"
+    ],
+    "/yemek-servisi/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/yemek-servisi/page.js"
+    ],
+    "/sikayet-bildirimi/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/sikayet-bildirimi/page.js"
+    ],
+    "/neden-labirent/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/neden-labirent/page.js"
+    ],
+    "/hakkimizda/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/hakkimizda/page.js"
+    ]
+  }
+}

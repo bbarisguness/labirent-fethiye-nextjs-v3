@@ -1,0 +1,307 @@
+/*!******************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[2].oneOf[8].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[2].oneOf[8].use[3]!./components/index/villa/card/villaCard.module.css ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************/
+.villaCard_imgNav__EoZ_h {
+    width: 100%;
+    position: absolute;
+    top: calc(50% - 12px);
+    z-index: 2;
+    display: flex;
+    justify-content: space-around;
+    gap: 50%;
+}
+
+.villaCard_imgNav__EoZ_h button {
+    width: 24px;
+    height: 24px;
+    z-index: 3;
+    background: none;
+    background-image: url("/images/arrowLeft.png");
+    border: none;
+    cursor: pointer;
+    color: red;
+}
+
+#villaCard_cardContainer__9oHYm {
+    width: 25%;
+    padding: 0 15px;
+    margin: 0 0 30px 0;
+}
+
+.villaCard_testimonialItemContainer__68lDX {
+    padding: 0 25px;
+}
+
+.villaCard_column__RB0o0 {
+    background: #FFFFFF;
+    box-shadow: 0px 6px 15px rgba(64, 79, 104, 0.05);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all .4s ease-in-out;
+}
+
+.villaCard_column__RB0o0:hover {
+    box-shadow: 0px 6px 15px rgba(64, 79, 104, 0.4);
+}
+
+.villaCard_column__RB0o0 .villaCard_imgBox__2EO1X {
+    width: 100%;
+    position: relative;
+}
+
+.villaCard_column__RB0o0 .villaCard_imgBox__2EO1X .villaCard_carouselBox__aQWZX {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.villaCard_column__RB0o0 .villaCard_imgBox__2EO1X .villaCard_carouselBox__aQWZX::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    /*background: linear-gradient(180deg, rgba(2, 4, 74, 0) 0%, #02044A 100%);*/
+    opacity: 0.5;
+}
+
+.villaCard_column__RB0o0 .villaCard_imgBox__2EO1X .villaCard_carouselBox__aQWZX .villaCard_bgImage__GZxX5 {
+    width: 100%;
+    height: 280px;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    background-size: cover;
+}
+
+.villaCard_column__RB0o0 .villaCard_imgBox__2EO1X .villaCard_cardFeatures__29r0e {
+    padding: 6px 20px;
+    position: absolute;
+    z-index: 2;
+    top: 20px;
+    left: 30px;
+    background: rgba(2, 4, 74, 0.5);
+    border-radius: 60px;
+    font-size: 12px;
+    line-height: 17px;
+    letter-spacing: 1.25px;
+    color: #FFFFFF;
+}
+
+.villaCard_column__RB0o0 .villaCard_imgBox__2EO1X .villaCard_cardFeatures2__v_38L {
+    padding: 8px 22px;
+    position: absolute;
+    z-index: 2;
+    bottom: -17px;
+    right: 30px;
+    background: #E8543E;
+    border-radius: 60px;
+    font-size: 13px;
+    line-height: 18px;
+    letter-spacing: 0.75px;
+    color: #FFFFFF;
+}
+
+.villaCard_column__RB0o0 .villaCard_imgBox__2EO1X .villaCard_cardFeatures3__9tSRD {
+    padding: 0 0 0 31px;
+    position: absolute;
+    z-index: 2;
+    bottom: 24px;
+    left: 30px;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 300;
+    letter-spacing: 0.75px;
+    color: #FFFFFF;
+}
+
+.villaCard_column__RB0o0 .villaCard_imgBox__2EO1X .villaCard_cardFeatures3__9tSRD::before {
+    content: '';
+    width: 24px;
+    height: 24px;
+    background-image: url(/images/medal-star.png);
+    position: absolute;
+    left: 0;
+}
+
+.villaCard_column__RB0o0 .villaCard_textBox__ERcIp {
+    width: 100%;
+    min-height: 215px;
+    padding: 20px 30px;
+}
+
+.villaCard_column__RB0o0 .villaCard_textBox__ERcIp .villaCard_title__yvtyN {
+    width: 100%;
+    margin: 0 0 10px 0;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 25px;
+    color: #02044A;
+}
+
+.villaCard_column__RB0o0 .villaCard_textBox__ERcIp .villaCard_location__mMVUh {
+    width: 100%;
+    padding: 0 0 0 27px;
+    margin: 0 0 15px 0;
+    font-size: 14px;
+    line-height: 20px;
+    color: #525265;
+    position: relative;
+}
+
+.villaCard_column__RB0o0 .villaCard_textBox__ERcIp .villaCard_location__mMVUh::before {
+    content: '';
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: url(/images/location.png);
+}
+
+.villaCard_column__RB0o0 .villaCard_textBox__ERcIp .villaCard_priceTitle__HgJA6 {
+    width: 100%;
+    margin: 0 0 7px 0;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 21px;
+    color: #02044A;
+}
+
+.villaCard_column__RB0o0 .villaCard_textBox__ERcIp .villaCard_price__WkH2g {
+    width: 100%;
+    margin: 0 0 10px 0;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 28px;
+    color: #7E53F9;
+}
+
+.villaCard_column__RB0o0 .villaCard_textBox__ERcIp .villaCard_features__15Tqx {
+    width: 100%;
+    padding: 15px 0 0 0;
+    border-top: 1px solid #D9D9E4;
+    display: flex;
+}
+
+.villaCard_column__RB0o0 .villaCard_textBox__ERcIp .villaCard_features__15Tqx .villaCard_colon___MMIa {
+    margin: 0 35px 0 0;
+    display: flex;
+    align-items: center;
+}
+
+.villaCard_column__RB0o0 .villaCard_textBox__ERcIp .villaCard_features__15Tqx .villaCard_colon___MMIa:last-child {
+    margin: 0;
+}
+
+.villaCard_column__RB0o0 .villaCard_textBox__ERcIp .villaCard_features__15Tqx .villaCard_colon___MMIa i {
+    width: 24px;
+    height: 24px;
+    margin: 0 10px 0 0;
+    background-repeat: no-repeat;
+}
+
+.villaCard_column__RB0o0 .villaCard_textBox__ERcIp .villaCard_features__15Tqx .villaCard_colon___MMIa i.villaCard_person_icon__mdZM3 {
+    background-image: url(/images/person.png);
+}
+
+.villaCard_column__RB0o0 .villaCard_textBox__ERcIp .villaCard_features__15Tqx .villaCard_colon___MMIa i.villaCard_room_icon__rojga {
+    background-image: url(/images/bed.png);
+}
+
+.villaCard_column__RB0o0 .villaCard_textBox__ERcIp .villaCard_features__15Tqx .villaCard_colon___MMIa i.villaCard_bath_icon__DEMN1 {
+    background-image: url(/images/bath.png);
+}
+
+.villaCard_column__RB0o0 .villaCard_textBox__ERcIp .villaCard_features__15Tqx .villaCard_colon___MMIa span {
+    font-size: 15px;
+    line-height: 20px;
+    color: #525265;
+}
+
+@media screen and (max-width: 1699px) {
+    .villaCard_column__RB0o0 .villaCard_imgBox__2EO1X .villaCard_carouselBox__aQWZX .villaCard_bgImage__GZxX5 {
+        height: 240px;
+    }
+
+    .villaCard_column__RB0o0 .villaCard_textBox__ERcIp .villaCard_features__15Tqx .villaCard_colon___MMIa {
+        margin: 0 10px 0 0;
+    }
+
+    .villaCard_column__RB0o0 .villaCard_textBox__ERcIp .villaCard_features__15Tqx .villaCard_colon___MMIa i {
+        margin: 0 5px 0 0;
+    }
+}
+
+@media screen and (max-width: 1499px) {
+    .villaCard_column__RB0o0 .villaCard_imgBox__2EO1X .villaCard_carouselBox__aQWZX .villaCard_bgImage__GZxX5 {
+        height: 199px;
+    }
+
+    .villaCard_column__RB0o0 .villaCard_imgBox__2EO1X .villaCard_cardFeatures__29r0e {
+        left: 15px;
+        padding: 6px 10px;
+    }
+
+    .villaCard_column__RB0o0 .villaCard_imgBox__2EO1X .villaCard_cardFeatures2__v_38L {
+        right: 15px;
+        padding: 8px 10px;
+    }
+
+    .villaCard_column__RB0o0 .villaCard_imgBox__2EO1X .villaCard_cardFeatures3__9tSRD {
+        left: 15px;
+    }
+
+    .villaCard_column__RB0o0 .villaCard_textBox__ERcIp {
+        padding: 15px 15px;
+    }
+
+    .villaCard_column__RB0o0 .villaCard_textBox__ERcIp .villaCard_features__15Tqx .villaCard_colon___MMIa {
+        margin: 0 10px 0 0;
+    }
+
+    .villaCard_column__RB0o0 .villaCard_textBox__ERcIp .villaCard_features__15Tqx .villaCard_colon___MMIa i {
+        margin: 0 5px 0 0;
+    }
+}
+
+@media screen and (max-width: 1199px) {
+    #villaCard_cardContainer__9oHYm {
+        width: 33.33%;
+    }
+
+    .villaCard_column__RB0o0 .villaCard_imgBox__2EO1X .villaCard_carouselBox__aQWZX .villaCard_bgImage__GZxX5 {
+        height: 223px;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    #villaCard_cardContainer__9oHYm {
+        width: 50%;
+    }
+
+    .villaCard_column__RB0o0 .villaCard_imgBox__2EO1X .villaCard_carouselBox__aQWZX .villaCard_bgImage__GZxX5 {
+        height: 264px;
+    }
+
+    .villaCard_column__RB0o0 .villaCard_textBox__ERcIp .villaCard_features__15Tqx {
+        justify-content: space-between;
+    }
+
+}
+
+@media screen and (max-width: 767px) {
+    #villaCard_cardContainer__9oHYm {
+        width: 100%;
+    }
+
+    .villaCard_column__RB0o0 .villaCard_imgBox__2EO1X .villaCard_carouselBox__aQWZX .villaCard_bgImage__GZxX5 {
+        height: 257px;
+    }
+
+    .villaCard_testimonialItemContainer__68lDX {
+        padding: 0 100px;
+    }
+}

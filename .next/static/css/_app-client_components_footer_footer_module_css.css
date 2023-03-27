@@ -1,0 +1,10 @@
+/*!*****************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[2].oneOf[8].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[2].oneOf[8].use[3]!./components/footer/footer.module.css ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************/
+.footer_footer__GaW5f {
+    width: 100%;
+    background: #02044A;
+    background-image: url(/images/footerBg.png);
+    background-position: left 40px;
+    background-repeat: no-repeat;
+}

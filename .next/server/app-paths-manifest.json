@@ -1,0 +1,6 @@
+{
+  "/[villaDetails]/page": "app/[villaDetails]/page.js",
+  "/villalar/page": "app/villalar/page.js",
+  "/page": "app/page.js",
+  "/villalar/[slug]/page": "app/villalar/[slug]/page.js"
+}

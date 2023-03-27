@@ -1,0 +1,321 @@
+.top {
+    width: 100%;
+    background: #FFFFFF;
+    border: 1px solid #D9D9E4;
+    box-sizing: border-box;
+    box-shadow: 0px 6px 15px rgba(64, 79, 104, 0.05);
+    border-radius: 8px;
+    margin: 0 0 30px 0;
+    padding: 30px;
+}
+
+.top .reservationBox {
+    width: 100%;
+    position: relative;
+}
+
+.top .reservationBox .reservationTitleText {
+    width: 100%;
+    margin: 0 0 30px 0;
+}
+
+.top .reservationBox .reservationTitleText .textTop {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 5px 0;
+}
+
+.top .reservationBox .reservationTitleText .textTop .price {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 33px;
+    color: #7E53F9;
+}
+
+.top .reservationBox .reservationTitleText .textTop .status {
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 21px;
+    text-decoration-line: underline;
+    color: #E8543E;
+}
+
+.top .reservationBox .reservationTitleText .textBottom {
+    width: 100%;
+}
+
+.top .reservationBox .reservationTitleText .textBottom span {
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 21px;
+    color: #02044A;
+}
+
+.top .reservationBox .colon {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 0 20px 0;
+    box-sizing: content-box;
+    position: relative;
+}
+
+.top .reservationBox .colon .colonTitle {
+    width: 100%;
+    margin: 0 0 10px 0;
+    color: #02044A;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.top .reservationBox .colon .colonInput {
+    width: 100%;
+    position: relative;
+}
+
+.top .reservationBox .colon .colonInput .loginDateIcon {
+    width: 20px;
+    height: 20px;
+    background-image: url(/images/date.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    left: 20px;
+    top: calc(50% - 10px);
+}
+
+.top .reservationBox .colon .colonInput .peopleIcon {
+    width: 20px;
+    height: 20px;
+    background-image: url(/images/people.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    left: 20px;
+    top: calc(50% - 10px);
+}
+
+.top .reservationBox .colon .colonInput input {
+    width: 100%;
+    background-color: transparent;
+    color: #6A6B93;
+    font-size: 14px;
+    padding: 0 0 0 30px;
+    line-height: 20px;
+    background: #FFFFFF;
+    /* Border */
+    border: 1px solid #D9D9E4;
+    box-sizing: border-box;
+    border-radius: 8px;
+    padding: 15px 20px 15px 50px;
+}
+
+.top .reservationBox .colon .colonInput input::placeholder {
+    color: #6A6B93;
+}
+
+.top .reservationBox .colon .numberPeopleOpen {
+    width: 100%;
+    height: 260px;
+    padding: 20px 30px;
+    background: #FFFFFF;
+    box-shadow: 0px 40px 30px rgba(25, 25, 46, 0.04);
+    border-radius: 8px;
+    position: absolute;
+    top: 87px;
+    right: 0;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 4;
+    border: 1px solid #D9D9E4;
+}
+
+.top .reservationBox .colon .numberPeopleOpen.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.top .reservationBox .colon .numberPeopleOpen ul {
+    width: 100%;
+}
+
+.top .reservationBox .colon .numberPeopleOpen ul li {
+    width: 100%;
+    border-bottom: 1px solid #D9D9E4;
+    padding: 0 0 20px 0;
+    margin: 0 0 20px 0;
+    display: flex;
+}
+
+.top .reservationBox .colon .numberPeopleOpen ul li:last-child {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+.top .reservationBox .colon .numberPeopleOpen ul li .leftPeople {
+    width: calc(100% - 120px);
+    margin: 0 20px 0 0;
+}
+
+.top .reservationBox .colon .numberPeopleOpen ul li .leftPeople .title {
+    width: 100%;
+    margin: 0 0 5px 0;
+    font-size: 15px;
+    line-height: 20px;
+    color: #02044A;
+}
+
+.top .reservationBox .colon .numberPeopleOpen ul li .leftPeople .desc {
+    width: 100%;
+    font-size: 14px;
+    line-height: 19px;
+    color: #6A6B93;
+}
+
+.top .reservationBox .colon .numberPeopleOpen ul li .rightPeople {
+    width: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.top .reservationBox .colon .numberPeopleOpen ul li .rightPeople .minus {
+    width: 30px;
+    height: 30px;
+    background-color: #F2EEFE;
+    border-radius: 50%;
+    cursor: pointer;
+    background-image: url("/images/minus.png");
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.top .reservationBox .colon .numberPeopleOpen ul li .rightPeople input {
+    width: 30px;
+    height: 30px;
+    font-weight: 600;
+    text-align: center;
+    margin: 0 5px;
+    background: transparent;
+    border: none;
+    color: #02044A;
+    font-size: 15px;
+}
+
+.top .reservationBox .colon .numberPeopleOpen ul li .rightPeople .plus {
+    width: 30px;
+    height: 30px;
+    background-color: #F2EEFE;
+    border-radius: 50%;
+    cursor: pointer;
+    background-image: url("/images/plus.png");
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.top .reservationBox .linkBox a {
+    width: 100%;
+}
+
+.linkBox {
+    display: flex;
+}
+
+.linkBox a {
+    padding: 15px 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    overflow: hidden;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #7E53F9;
+    position: relative;
+    transition: all .2s ease-in-out;
+}
+
+.linkBox a.blueButtonArrow {
+    background: #3E2093;
+    color: #ffffff;
+    padding: 18px 90px 18px 60px;
+    position: relative;
+}
+
+.linkBox a.blueButtonArrow:hover {
+    color: #7E53F9;
+}
+
+.linkBox a.blueButtonArrow:hover::before {
+    right: 50px;
+}
+
+.linkBox a.blueButtonArrow::after {
+    background: #7E53F9;
+}
+
+.linkBox a.blueButtonArrow::before {
+    content: "";
+    background-image: url("/images/right-arrow-white.png");
+    width: 8px;
+    height: 14px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    right: 60px;
+    top: calc(50% - 7px);
+    z-index: 3;
+    transition: right 0.2s ease-in-out;
+}
+
+.linkBox a.blueButtonArrow span {
+    color: #FFFFFF;
+}
+
+.linkBox a:after {
+    position: absolute;
+    transition: 0.3s;
+    content: "";
+    width: 0;
+    left: auto;
+    right: -10%;
+    bottom: 0;
+    height: 100%;
+    background: #3E2093;
+    transform: skewX(15deg);
+    z-index: 1;
+}
+
+.linkBox a:hover {
+    color: #ffffff;
+}
+
+.linkBox a:hover:after {
+    left: -10%;
+    right: auto;
+    width: 120%;
+}
+
+.linkBox a span {
+    position: relative;
+    z-index: 2;
+    display: flex;
+}
+
+@media screen and (max-width: 1499px) {
+    .top {
+        padding: 15px;
+    }
+
+    .top .reservationBox .colon .numberPeopleOpen {
+        padding: 15px 15px;
+    }
+
+    .top .reservationBox .linkBox a {
+        padding: 18px 90px 18px 40px;
+    }
+}

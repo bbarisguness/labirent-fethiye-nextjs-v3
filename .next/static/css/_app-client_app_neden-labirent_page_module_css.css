@@ -1,0 +1,228 @@
+/*!****************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[2].oneOf[8].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[2].oneOf[8].use[3]!./app/neden-labirent/page.module.css ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************/
+section.page_contentDetail___tW_u {
+    width: 100%;
+    padding: 120px 0;
+}
+
+.page_container__jLFDP {
+    width: 1600px;
+    margin: 0 auto;
+}
+
+.page_titleBox__WPzE9 {
+    width: 100%;
+    margin: 0 0 60px 0;
+}
+
+.page_titleBox__WPzE9 .page_title__4usiF {
+    width: 100%;
+    color: #02044A;
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 55px;
+    text-align: center;
+}
+
+section.page_corporate__v5DXT .page_textBox__d16Gv {
+    width: 100%;
+    margin-bottom: 120px !important;
+}
+
+section.page_corporate__v5DXT .page_textBox__d16Gv .page_text__vhrxQ {
+    width: 100%;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 26px;
+    color: #525265;
+}
+
+section.page_corporate__v5DXT .page_textBox__d16Gv .page_text__vhrxQ h2,
+section.page_corporate__v5DXT .page_textBox__d16Gv .page_text__vhrxQ h3,
+section.page_corporate__v5DXT .page_textBox__d16Gv .page_text__vhrxQ h4 {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 25px;
+    color: #02044A;
+    margin: 0 0 30px 0;
+}
+
+section.page_corporate__v5DXT .page_textBox__d16Gv .page_text__vhrxQ p {
+    width: 100%;
+    margin: 0 0 30px 0;
+}
+
+section.page_corporate__v5DXT .page_textBox__d16Gv .page_text__vhrxQ strong {
+    color: #02044A;
+}
+
+section.page_corporate__v5DXT .page_textBox__d16Gv .page_text__vhrxQ a {
+    color: #02044A;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+section.page_corporate__v5DXT .page_textBox__d16Gv .page_text__vhrxQ ul {
+    width: 100%;
+    margin: 15px 0 15px 0;
+}
+
+section.page_corporate__v5DXT .page_textBox__d16Gv .page_text__vhrxQ ul li {
+    position: relative;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 26px;
+    color: #525265;
+    padding: 0 0 0 50px;
+    margin: 0 0 10px 0;
+}
+
+section.page_corporate__v5DXT .page_textBox__d16Gv .page_text__vhrxQ ul li::before {
+    content: "";
+    position: absolute;
+    left: 22.5px;
+    top: 11.5px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: #3E2093;
+}
+
+section.page_corporate__v5DXT .page_textBox__d16Gv .page_text__vhrxQ ul li a {
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 26px;
+    color: #525265;
+}
+
+section.page_corporate__v5DXT .page_textBox__d16Gv .page_fancyboxImages__23zSm {
+    width: 100%;
+}
+
+section.page_corporate__v5DXT .page_textBox__d16Gv .page_fancyboxImages__23zSm ul {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+section.page_corporate__v5DXT .page_textBox__d16Gv .page_fancyboxImages__23zSm ul li {
+    position: relative;
+    width: 377px;
+    margin: 0 30px 30px 0;
+}
+
+section.page_corporate__v5DXT .page_textBox__d16Gv .page_fancyboxImages__23zSm ul li:nth-child(4n) {
+    margin: 0 0 30px 0;
+}
+
+section.page_corporate__v5DXT .page_textBox__d16Gv .page_fancyboxImages__23zSm ul li:hover a::before {
+    opacity: 1;
+}
+
+section.page_corporate__v5DXT .page_textBox__d16Gv .page_fancyboxImages__23zSm ul li a {
+    width: 100%;
+    display: flex;
+}
+
+section.page_corporate__v5DXT .page_textBox__d16Gv .page_fancyboxImages__23zSm ul li a::before {
+    content: "";
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    top: calc(50% - 35px);
+    left: calc(50% - 35px);
+    background-image: url(/images/zoom.png);
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+}
+
+section.page_corporate__v5DXT .page_textBox__d16Gv .page_fancyboxImages__23zSm ul li a .page_imageBox__TOv06 {
+    width: 100%;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+section.page_corporate__v5DXT .page_textBox__d16Gv .page_fancyboxImages__23zSm ul li a .page_imageBox__TOv06 .page_image__If7xu {
+    width: 100%;
+    height: 320px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+section.page_corporate__v5DXT .page_textBox__d16Gv {
+    margin: 0;
+}
+
+section.page_corporate__v5DXT .page_textBox__d16Gv .page_fancyboxImages__23zSm ul li {
+    width: 300px;
+    margin: 0 15px 15px 0;
+}
+
+section.page_corporate__v5DXT .page_textBox__d16Gv .page_fancyboxImages__23zSm ul li a .page_imageBox__TOv06 .page_image__If7xu {
+    height: 255px;
+}
+
+@media screen and (max-width: 1699px) {
+    .page_container__jLFDP {
+        width: 1400px;
+    }
+}
+
+@media screen and (max-width: 1499px) {
+    .page_container__jLFDP {
+        width: 1170px;
+    }
+}
+
+@media screen and (max-width: 1199px) {
+    .page_container__jLFDP {
+        width: 100%;
+        padding: 0 15px;
+    }
+
+    .page_titleBox__WPzE9 {
+        margin: 0 0 45px 0;
+    }
+
+}
+
+@media screen and (max-width: 767px) {
+    .page_titleBox__WPzE9 {
+        margin: 0 0 30px 0;
+    }
+
+    .page_titleBox__WPzE9 .page_title__4usiF {
+        font-size: 32px;
+        line-height: 42px;
+    }
+
+    section.page_corporate__v5DXT .page_textBox__d16Gv .page_text__vhrxQ h2,
+    section.page_corporate__v5DXT .page_textBox__d16Gv .page_text__vhrxQ h3,
+    section.page_corporate__v5DXT .page_textBox__d16Gv .page_text__vhrxQ h4 {
+        margin: 0 0 15px 0;
+        font-size: 16px;
+        line-height: 26px;
+    }
+
+    section.page_corporate__v5DXT .page_textBox__d16Gv .page_text__vhrxQ p {
+        margin: 0 0 15px 0;
+        font-size: 14px;
+        line-height: 24px;
+    }
+
+    section.page_corporate__v5DXT .page_textBox__d16Gv .page_fancyboxImages__23zSm {
+        padding: 15px 0;
+    }
+
+    section.page_corporate__v5DXT .page_textBox__d16Gv .page_fancyboxImages__23zSm ul li {
+        width: 100%;
+        margin: 0 0 15px 0;
+    }
+
+    section.page_corporate__v5DXT .page_textBox__d16Gv .page_fancyboxImages__23zSm ul li a .page_imageBox__TOv06 .page_image__If7xu {
+        height: 293px;
+    }
+}

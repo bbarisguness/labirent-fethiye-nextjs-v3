@@ -1,0 +1,228 @@
+/*!************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[2].oneOf[8].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[2].oneOf[8].use[3]!./app/dolandiricilara-dikkat/page.module.css ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************/
+section.page_contentDetail__3w_0k {
+    width: 100%;
+    padding: 120px 0;
+}
+
+.page_container__mgk_s {
+    width: 1600px;
+    margin: 0 auto;
+}
+
+.page_titleBox__FZ91k {
+    width: 100%;
+    margin: 0 0 60px 0;
+}
+
+.page_titleBox__FZ91k .page_title__fSyWQ {
+    width: 100%;
+    color: #02044A;
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 55px;
+    text-align: center;
+}
+
+section.page_corporate__hiMFY .page_textBox__ZMBb4 {
+    width: 100%;
+    margin-bottom: 120px !important;
+}
+
+section.page_corporate__hiMFY .page_textBox__ZMBb4 .page_text__sOAwv {
+    width: 100%;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 26px;
+    color: #525265;
+}
+
+section.page_corporate__hiMFY .page_textBox__ZMBb4 .page_text__sOAwv h2,
+section.page_corporate__hiMFY .page_textBox__ZMBb4 .page_text__sOAwv h3,
+section.page_corporate__hiMFY .page_textBox__ZMBb4 .page_text__sOAwv h4 {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 25px;
+    color: #02044A;
+    margin: 0 0 30px 0;
+}
+
+section.page_corporate__hiMFY .page_textBox__ZMBb4 .page_text__sOAwv p {
+    width: 100%;
+    margin: 0 0 30px 0;
+}
+
+section.page_corporate__hiMFY .page_textBox__ZMBb4 .page_text__sOAwv strong {
+    color: #02044A;
+}
+
+section.page_corporate__hiMFY .page_textBox__ZMBb4 .page_text__sOAwv a {
+    color: #02044A;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+section.page_corporate__hiMFY .page_textBox__ZMBb4 .page_text__sOAwv ul {
+    width: 100%;
+    margin: 15px 0 15px 0;
+}
+
+section.page_corporate__hiMFY .page_textBox__ZMBb4 .page_text__sOAwv ul li {
+    position: relative;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 26px;
+    color: #525265;
+    padding: 0 0 0 50px;
+    margin: 0 0 10px 0;
+}
+
+section.page_corporate__hiMFY .page_textBox__ZMBb4 .page_text__sOAwv ul li::before {
+    content: "";
+    position: absolute;
+    left: 22.5px;
+    top: 11.5px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: #3E2093;
+}
+
+section.page_corporate__hiMFY .page_textBox__ZMBb4 .page_text__sOAwv ul li a {
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 26px;
+    color: #525265;
+}
+
+section.page_corporate__hiMFY .page_textBox__ZMBb4 .page_fancyboxImages__yPCA5 {
+    width: 100%;
+}
+
+section.page_corporate__hiMFY .page_textBox__ZMBb4 .page_fancyboxImages__yPCA5 ul {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+section.page_corporate__hiMFY .page_textBox__ZMBb4 .page_fancyboxImages__yPCA5 ul li {
+    position: relative;
+    width: 377px;
+    margin: 0 30px 30px 0;
+}
+
+section.page_corporate__hiMFY .page_textBox__ZMBb4 .page_fancyboxImages__yPCA5 ul li:nth-child(4n) {
+    margin: 0 0 30px 0;
+}
+
+section.page_corporate__hiMFY .page_textBox__ZMBb4 .page_fancyboxImages__yPCA5 ul li:hover a::before {
+    opacity: 1;
+}
+
+section.page_corporate__hiMFY .page_textBox__ZMBb4 .page_fancyboxImages__yPCA5 ul li a {
+    width: 100%;
+    display: flex;
+}
+
+section.page_corporate__hiMFY .page_textBox__ZMBb4 .page_fancyboxImages__yPCA5 ul li a::before {
+    content: "";
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    top: calc(50% - 35px);
+    left: calc(50% - 35px);
+    background-image: url(/images/zoom.png);
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+}
+
+section.page_corporate__hiMFY .page_textBox__ZMBb4 .page_fancyboxImages__yPCA5 ul li a .page_imageBox__AOfjC {
+    width: 100%;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+section.page_corporate__hiMFY .page_textBox__ZMBb4 .page_fancyboxImages__yPCA5 ul li a .page_imageBox__AOfjC .page_image__nruOg {
+    width: 100%;
+    height: 320px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+section.page_corporate__hiMFY .page_textBox__ZMBb4 {
+    margin: 0;
+}
+
+section.page_corporate__hiMFY .page_textBox__ZMBb4 .page_fancyboxImages__yPCA5 ul li {
+    width: 300px;
+    margin: 0 15px 15px 0;
+}
+
+section.page_corporate__hiMFY .page_textBox__ZMBb4 .page_fancyboxImages__yPCA5 ul li a .page_imageBox__AOfjC .page_image__nruOg {
+    height: 255px;
+}
+
+@media screen and (max-width: 1699px) {
+    .page_container__mgk_s {
+        width: 1400px;
+    }
+}
+
+@media screen and (max-width: 1499px) {
+    .page_container__mgk_s {
+        width: 1170px;
+    }
+}
+
+@media screen and (max-width: 1199px) {
+    .page_container__mgk_s {
+        width: 100%;
+        padding: 0 15px;
+    }
+
+    .page_titleBox__FZ91k {
+        margin: 0 0 45px 0;
+    }
+
+}
+
+@media screen and (max-width: 767px) {
+    .page_titleBox__FZ91k {
+        margin: 0 0 30px 0;
+    }
+
+    .page_titleBox__FZ91k .page_title__fSyWQ {
+        font-size: 32px;
+        line-height: 42px;
+    }
+
+    section.page_corporate__hiMFY .page_textBox__ZMBb4 .page_text__sOAwv h2,
+    section.page_corporate__hiMFY .page_textBox__ZMBb4 .page_text__sOAwv h3,
+    section.page_corporate__hiMFY .page_textBox__ZMBb4 .page_text__sOAwv h4 {
+        margin: 0 0 15px 0;
+        font-size: 16px;
+        line-height: 26px;
+    }
+
+    section.page_corporate__hiMFY .page_textBox__ZMBb4 .page_text__sOAwv p {
+        margin: 0 0 15px 0;
+        font-size: 14px;
+        line-height: 24px;
+    }
+
+    section.page_corporate__hiMFY .page_textBox__ZMBb4 .page_fancyboxImages__yPCA5 {
+        padding: 15px 0;
+    }
+
+    section.page_corporate__hiMFY .page_textBox__ZMBb4 .page_fancyboxImages__yPCA5 ul li {
+        width: 100%;
+        margin: 0 0 15px 0;
+    }
+
+    section.page_corporate__hiMFY .page_textBox__ZMBb4 .page_fancyboxImages__yPCA5 ul li a .page_imageBox__AOfjC .page_image__nruOg {
+        height: 293px;
+    }
+}

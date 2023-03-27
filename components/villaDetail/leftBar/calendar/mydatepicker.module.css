@@ -1,0 +1,106 @@
+.months-container {
+    width: 100%;
+    display: none;
+    flex-wrap: wrap
+}
+
+.months-container .month-container {
+    float: left;
+    text-align: center;
+    padding: 0
+}
+
+.months-container .month-container.month- {
+    width: 25%;
+    margin: 15px 0;
+}
+
+.month-container table {
+    margin: auto;
+    border-spacing: 0
+}
+
+.month-container table td,
+.month-container table th {
+    text-align: center;
+    width: 30px;
+    height: 30px;
+    border: none;
+    font-size: 14px;
+}
+
+.month-container table.month th.month-title {
+    font-size: 16px;
+    padding-bottom: 15px;
+    user-select: none;
+}
+
+.month-container table.month th.day-header {
+    font-size: 14px;
+    user-select: none;
+}
+
+.month-container table.month tr td,
+.month-container table.month tr th {
+    padding: 0;
+    user-select: none;
+}
+
+.month-container table.month td.new,
+.month-container table.month td.new:hover,
+.month-container table.month td.old,
+.month-container table.month td.old:hover {
+    background: 0 0;
+    cursor: default;
+}
+
+.month-container table.month td.day .day-content {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.month-container table.month td.day.day-start {
+    background-color: transparent !important;
+    background-image: url(/images/dateLeft.png);
+}
+
+.month-container table.month td.day.day-end {
+    background-color: transparent !important;
+    background-image: url(/images/dateRight.png);
+}
+
+.month-container table.month td.day.day-continue {
+    background-color: rgb(232, 84, 62);
+}
+
+@media screen and (max-width: 1499px) {
+    .months-container .month-container.month- {
+        width: 33.33333%;
+    }
+}
+
+@media screen and (max-width: 1199px) {
+    .months-container .month-container.month- {
+        width: 25%;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .months-container .month-container.month- {
+        width: 33.33333%;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .months-container .month-container.month- {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 490px) {
+    .months-container .month-container.month- {
+        width: 100%;
+    }
+}
