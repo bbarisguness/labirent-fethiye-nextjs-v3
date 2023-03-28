@@ -1,4 +1,4 @@
-// File: C:\Users\Baris\Source\NextJs\labirent-fethiye-nextjs-v3\app\[villaDetails]\page.jsx
+// File: D:\Projeler\Netxjs\labirent-fethiye-nextjs-v3\app\[villaDetails]\page.jsx
 import * as entry from '../../../../app/[villaDetails]/page'
 import type { ResolvingMetadata } from 'next/dist/lib/metadata/types/metadata-interface'
 
