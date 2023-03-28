@@ -88,7 +88,7 @@ export default function Reservation() {
                     </div>
                 </div>
                 <div className={styles.linkBox}>
-                    <Link className={styles.blueButtonArrow} href="#">
+                    <Link className={styles.blueButtonArrow} href="/rezervasyon">
                         <span>Villa Müsaitliği Sorgula</span>
                     </Link>
                 </div>
