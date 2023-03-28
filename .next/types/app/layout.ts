@@ -1,4 +1,4 @@
-// File: C:\Users\Baris\Source\NextJs\labirent-fethiye-nextjs-v3\app\layout.jsx
+// File: D:\Projeler\Netxjs\labirent-fethiye-nextjs-v3\app\layout.jsx
 import * as entry from '../../../app/layout'
 import type { ResolvingMetadata } from 'next/dist/lib/metadata/types/metadata-interface'
 

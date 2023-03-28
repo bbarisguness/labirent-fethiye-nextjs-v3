@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.3",
+    "data-fns": "^1.1.0",
     "date-fns": "^2.29.3",
     "lightgallery": "^2.7.1",
     "next": "13.2.4",
