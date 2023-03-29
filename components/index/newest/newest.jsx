@@ -4,8 +4,44 @@ import styles from "./newest.module.css"
 import { stockData } from "@/data/data";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import { useState, useEffect } from "react";
+const qs = require('qs');
 
 export default function NewVillas() {
+
+    const [villas, setVillas] = useState([])
+
+    const query = qs.stringify(
+        {
+            pagination: {
+                page: 1,
+                pageSize: 6,
+            },
+            populate: ["gallery.image", "price_tables.price_type", "region", "localizations"]
+        },
+        {
+            encodeValuesOnly: true, // prettify URL
+        }
+    );
+
+
+    useEffect(() => {
+        fetch(`http://3.127.136.179:1337/api/villas?${query}`)
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    setVillas(result.data)
+                    //console.log(result.data);
+                    //console.log(result.data[0].attributes.gallery.data.attributes.image.data);
+                },
+                (error) => {
+
+                }
+            )
+
+        //console.log(`http://3.127.136.179:1337/api/villas?${query}`);
+    }, [villas])
+
     return (
         <div className={styles.newVillas}>
             <div className={styles.container}>
@@ -37,7 +73,7 @@ export default function NewVillas() {
                                         max: 3000,
                                         min: 1024
                                     },
-                                    items: 3,
+                                    items: 4,
                                     partialVisibilityGutter: 40
                                 },
                                 mobile: {
@@ -65,9 +101,12 @@ export default function NewVillas() {
                             swipeable
                             removeArrowOnDeviceType={["tablet", "mobile"]}
                         >
-                            {stockData.map((data, index) =>
+                            {/* {stockData.map((data, index) =>
                                 <VillaCard key={index} data={data} type="apart" from="newest" />
-                            )}
+                            )} */}
+                            {
+                                    villas.map((villa, index) => <VillaCard key={index} data={villa} type="apart" from="newest" />)
+                                }
                         </Carousel>
                     </div>
                 </div>

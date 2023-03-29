@@ -42,7 +42,7 @@ export default function Reservation() {
 
     useEffect(() => {
         setDateClickCount(dateClickCount + 1)
-        console.log(reservationDate);
+        //console.log(reservationDate);
         if (!(reservationDate.startDate.getTime() == reservationDate.endDate.getTime())) {
             girisveCikisTarihiniAl()
         }
@@ -82,6 +82,17 @@ export default function Reservation() {
         }
     })
 
+    function handleClick() {
+
+        // yıl : reservationDate.startDate.getFullYear()
+        //  ay : (reservationDate.startDate.getMonth() + 1)
+        // gün : reservationDate.startDate.getDate()
+
+        console.log('Giriş Tarihi : ' + reservationDate.startDate.getFullYear() + '-' + (reservationDate.startDate.getMonth() + 1) + '-' + reservationDate.startDate.getDate());
+        console.log('Çıkış Tarihi : ' + reservationDate.endDate.getFullYear() + '-' + (reservationDate.endDate.getMonth() + 1) + '-' + reservationDate.endDate.getDate());
+
+    }
+
     return (
         <div className={styles.top}>
             <div className={styles.reservationBox}>
@@ -101,7 +112,7 @@ export default function Reservation() {
                         <input type="text" placeholder={datePlaceHolder} readOnly disabled />
                     </div>
                     {isDateRangeOpen && (<DateRange
-                        editableDateInputs={true}
+                        editableDateInputs={false}
                         onChange={(item) => setReservationDate(item.selection)}
                         moveRangeOnFirstSelection={false}
                         ranges={[reservationDate]}
@@ -156,9 +167,12 @@ export default function Reservation() {
                     </div>
                 </div>
                 <div className={styles.linkBox}>
-                    <Link className={styles.blueButtonArrow} href="/rezervasyon">
+                     {/* <Link className={styles.blueButtonArrow} href="javascript" onClick={handleClick}>
                         <span>Villa Müsaitliği Sorgula</span>
-                    </Link>
+                    </Link>  */}
+                    <button className={styles.blueButtonArrow} onClick={handleClick}>
+                        <span>Villa Müsaitliği Sorgula</span>
+                    </button> 
                 </div>
             </div>
         </div>
