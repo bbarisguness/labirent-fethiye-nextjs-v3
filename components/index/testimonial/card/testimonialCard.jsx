@@ -1,26 +1,26 @@
 import styles from "./testimonialcard.module.css"
 
-export default function TestimonialCard() {
+export default function TestimonialCard({ data }) {
+    console.log(data);
     return (
         <div className={styles.cardContainer}>
             <div className={styles.ulTop}>
                 <div className={styles.imgBox}>
                     <div className={styles.bgImage}
-                        style={{ backgroundImage: "url(/images/testimonials-1.png)" }}></div>
+                        style={{ backgroundImage: `url(http://3.127.136.179:1337${data?.attributes?.villa?.data?.attributes?.gallery?.data?.attributes?.image?.data[0]?.attributes?.url})` }}></div>
+                        
                 </div>
                 <div className={styles.textBox}>
-                    <div className={styles.title}>Villa London</div>
-                    <div className={styles.location}>Kalkan / Üzümlü</div>
+                    <div className={styles.title}>{data.attributes.villa.data.attributes.name}</div>
+                    <div className={styles.location}>Fethiye / {data.attributes.villa.data.attributes.region.data.attributes.name}</div>
                 </div>
             </div>
             <div className={styles.ulCenter}>
-                “ Dinlenmek ve keyifli vakit geçirmek için eşsiz bir yer. Bugüne kadar
-                keşfetmediğimize pişman
-                olduk. “
+                “ {data.attributes.comment} “
             </div>
             <div className={styles.ulBottom}>
-                <div className={styles.name}>Ali Tufan</div>
-                <div className={styles.date}>04.06.2021</div>
+                <div className={styles.name}>{data.attributes.name}</div>
+                <div className={styles.date}>{data.attributes.createdAt}</div>
             </div>
         </div>
     )

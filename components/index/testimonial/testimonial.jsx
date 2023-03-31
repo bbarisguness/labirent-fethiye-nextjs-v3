@@ -1,9 +1,53 @@
+'use client';
 import styles from "./testimonial.module.css"
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import TestimonialCard from "./card/testimonialCard";
+const qs = require('qs');
+import { useEffect, useState } from "react"
 
 export default function Testimonial() {
+
+    const [ready, setReady] = useState(false)
+
+    const [comments, setComments] = useState([])
+
+
+    const query = qs.stringify(
+        {
+            populate: ["villa.region","villa.gallery.image"],
+            pagination: {
+                page: 1,
+                pageSize: 6,
+            }
+        },
+        {
+            encodeValuesOnly: true, // prettify URL
+        }
+    );
+
+    useEffect(() => {
+        fetch(`http://3.127.136.179:1337/api/testimonials?${query}`)
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    setComments(result.data)
+                    setReady(true)
+                    //console.log(result.data);
+                    //console.log(result.data[0].attributes.gallery.data.attributes.image.data);
+                },
+                (error) => {
+
+                }
+            )
+
+        //console.log(`http://3.127.136.179:1337/api/villas?${query}`);
+    }, [ready])
+
+
+
+
+
     return (
         <div className={styles.testimonials}>
             <div className={styles.container}>
@@ -66,10 +110,9 @@ export default function Testimonial() {
                         slidesToSlide={1}
                         swipeable
                     >
-                        <TestimonialCard />
-                        <TestimonialCard />
-                        <TestimonialCard />
-                        <TestimonialCard />
+                        {
+                            comments.map((comment, index) => <TestimonialCard key={index} data={comment} />)
+                        }
                     </Carousel>
                 </div>
             </div>
