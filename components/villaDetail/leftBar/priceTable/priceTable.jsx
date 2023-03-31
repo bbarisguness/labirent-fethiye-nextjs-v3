@@ -1,6 +1,8 @@
+'use client';
 import styles from "./priceTable.module.css"
-import { useState } from "react"
+import React, { useEffect, useState } from "react"
 import Link from "next/link"
+
 
 export default function PriceTable({ data }) {
 
@@ -10,6 +12,8 @@ export default function PriceTable({ data }) {
 
     const handlePriceTable = (index) => {
         setPriceTableActiveIndex(index)
+
+
     }
 
     const priceType = () => {
@@ -18,6 +22,25 @@ export default function PriceTable({ data }) {
         else if (priceTableActiveIndex == 2) return "€"
         else return "£"
     }
+
+    // exchange
+    const [usd, setUsd] = useState(0)
+    const [eur, setEur] = useState(0)
+    const [gbp, setGbp] = useState(0)
+    useEffect(() => {
+
+        fetch('http://hasanadiguzel.com.tr/api/kurgetir')
+            .then(response => response.json())
+            .then(data => {
+                //console.log(data.TCMB_AnlikKurBilgileri)
+                //setExchanges(data.TCMB_AnlikKurBilgileri)
+                //setReady(true)
+                setUsd(data.TCMB_AnlikKurBilgileri[0].BanknoteSelling)
+                setEur(data.TCMB_AnlikKurBilgileri[3].BanknoteSelling)
+                setGbp(data.TCMB_AnlikKurBilgileri[4].BanknoteSelling)
+            });
+
+    }, [gbp])
 
     return (
         <div className={styles.priceTable}>
@@ -44,10 +67,14 @@ export default function PriceTable({ data }) {
                                     </div>
                                     <div className={styles.rightBox}>
                                         <div className={styles.name}>
-                                        {data.attributes.title}
+                                            {data.attributes.title}
                                         </div>
                                         <div className={styles.desc}>{data.attributes.description}</div>
-                                        <div className={styles.price}>{data.attributes.price} {priceType()}</div>
+                                        <div className={styles.price}>
+                                            {
+                                                (priceTableActiveIndex === 1 ? ((parseFloat(data.attributes.price) / usd).toFixed(2) + " " + priceType()) : priceTableActiveIndex === 2 ? ((parseFloat(data.attributes.price) / eur).toFixed(2) + " " + priceType()) : priceTableActiveIndex === 3 ? ((parseFloat(data.attributes.price) / gbp).toFixed(2) + " " + priceType()) : (parseFloat(data.attributes.price).toFixed(2) + " " + priceType()))
+                                            }
+                                        </div>
                                     </div>
                                 </div>
                             </li>
