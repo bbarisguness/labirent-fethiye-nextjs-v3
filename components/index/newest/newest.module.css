@@ -5,6 +5,10 @@
     padding: 105px 0 60px 0;
 }
 
+.corousel {
+    padding-bottom: 60px;
+}
+
 .newVillas::before {
     content: '';
     width: 100%;
@@ -61,11 +65,10 @@
 .newVillas .box .top {
     width: 100%;
     position: relative;
-    overflow: hidden;
 }
 
-.arrow .arrowButton {
-    z-index: 3;
+.carouselButtonGroup .arrowButton {
+    z-index: 10;
     width: 50px;
     height: 50px;
     background: #FFFFFF;
@@ -80,15 +83,15 @@
     transition: all .4s ease-in-out;
 }
 
-.arrow .arrowButton:hover {
+.carouselButtonGroup .arrowButton:hover {
     opacity: 0.8;
 }
 
-.arrow .arrowButton.prev {
+.carouselButtonGroup .arrowButton.prev {
     transform: rotate(180deg);
 }
 
-.arrow .arrowButton.next {
+.carouselButtonGroup .arrowButton.next {
     right: -100px;
     left: inherit;
 }

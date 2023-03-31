@@ -80,7 +80,7 @@ export default function HeaderBottom({ from }) {
                                     </Link>
                                 </li>
                                 <li className={styles.menu_li}>
-                                    <Link href="#" className={styles.menuLink}>
+                                    <Link href="/arac-kiralama" className={styles.menuLink}>
                                         <span>ARAÇ KİRALAMA</span>
                                     </Link>
                                 </li>

@@ -1,7 +1,6 @@
 'use client';
 import VillaCard from "../villa/card/villaCard"
 import styles from "./newest.module.css"
-import { stockData } from "@/data/data";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { useState, useEffect } from "react";
@@ -24,6 +23,14 @@ export default function NewVillas() {
         }
     );
 
+    const ButtonGroup = ({ next, previous, goToSlide, ...rest }) => {
+        return (
+            <div className={styles.carouselButtonGroup}>
+                <div className={`${styles['arrowButton']} ${styles['prev']}`} onClick={() => previous()}></div>
+                <div className={`${styles['arrowButton']} ${styles['next']}`} onClick={() => next()}></div>
+            </div>
+        );
+    };
 
     useEffect(() => {
         fetch(`http://3.127.136.179:1337/api/villas?${query}`)
@@ -40,7 +47,7 @@ export default function NewVillas() {
             )
 
         //console.log(`http://3.127.136.179:1337/api/villas?${query}`);
-    }, [villas])
+    }, [])
 
     return (
         <div className={styles.newVillas}>
@@ -53,19 +60,19 @@ export default function NewVillas() {
                     <div className={styles.top}>
                         <Carousel
                             additionalTransfrom={0}
-                            arrows
+                            arrows={false}
                             autoPlaySpeed={3000}
                             centerMode={false}
-                            className=""
+                            className={styles.corousel}
                             dotListClass=""
                             draggable
                             focusOnSelect={false}
                             infinite
                             itemClass=""
-                            minimumTouchDrag={20}
+                            minimumTouchDrag={80}
                             pauseOnHover
                             renderArrowsWhenDisabled={false}
-                            renderButtonGroupOutside={false}
+                            renderButtonGroupOutside={true}
                             renderDotsOutside={false}
                             responsive={{
                                 desktop: {
@@ -99,14 +106,15 @@ export default function NewVillas() {
                             sliderClass=""
                             slidesToSlide={1}
                             swipeable
+                            customButtonGroup={<ButtonGroup />}
                             removeArrowOnDeviceType={["tablet", "mobile"]}
                         >
                             {/* {stockData.map((data, index) =>
                                 <VillaCard key={index} data={data} type="apart" from="newest" />
                             )} */}
                             {
-                                    villas.map((villa, index) => <VillaCard key={index} data={villa} type="apart" from="newest" />)
-                                }
+                                villas.map((villa, index) => <VillaCard key={index} data={villa} type="apart" from="newest" />)
+                            }
                         </Carousel>
                     </div>
                 </div>

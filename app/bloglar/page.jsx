@@ -3,10 +3,53 @@ import styles from "./page.module.css"
 import Link from "next/link"
 
 export default function Blog() {
+    const data = [
+        {
+            "id": 1,
+            "photoName": "k_blob-2022311-2233846.png",
+            "title": "Ölüdeniz Nerededir ve Nasıl Gidilir ?",
+            "desc": "Türkiye’nin en güzel tatil yerlerinden biri olan Ölüdeniz’e ulaşım gayet kolaydır.Kara yolu, hava yolu ve deniz yolu gibi çeşitlilik barındıran ulaşım seçenekleri ile ulaşım mümkündür."
+        },
+        {
+            "id": 2,
+            "photoName": "k_blob-2022311-2235903.png",
+            "title": "Fethiyede Terkedilmiş Bir Cennet: Kayaköy",
+            "desc": "Kayaköy gün geçtikçe fark edilen ve daha fazla ziyaretçi çeken mekanların başında geliyor. Bölgenin kendine has güzelliği içinde yarı yıkılmış tarihi evler bir tepenin yamaçlarını tamamen kaplıyor."
+        },
+        {
+            "id": 3,
+            "photoName": "k_blob-2022414-1328732.png",
+            "title": "Fethiye At Turu",
+            "desc": "Fethiye at turu haftanın her günü yapılmaktadır. Hava şartlarının müsaade ettiği zamanlarda günlük iki, üç seans yapılabilmekte, böylece en uygun zamanda gezmelere katılma imkanınız olmaktadır."
+        },
+        {
+            "id": 4,
+            "photoName": "k_blob-2022414-1325688.png",
+            "title": "Fethiye Kiralık Villa",
+            "desc": "Hem ülkemizin çeşitli bölgelerinden hem de yurtdışından gelen on binlerce kişiye ev sahipliği yapmakta olan bölge için kiralık villa ve apart hizmeti sunmakta olan birçok farklı firma da mevcuttur."
+        }
+    ]
     const handleImageButton = (e) => {
         e.preventDefault();
         console.log("butona basıldı")
     }
+
+    const generateBlogLink = (title) => {
+        let url = title
+            .toLowerCase()
+            .replaceAll(" ", "-")
+            .replaceAll("?", "")
+            .replaceAll(":", "")
+            .replaceAll("ı", "i")
+            .replaceAll("ç", "c")
+            .replaceAll("ş", "s")
+            .replaceAll("ö", "o")
+            .replaceAll("ü", "u")
+            .replaceAll("ğ", "g")
+            .replaceAll("ı", "i")
+        return url
+    }
+
     return (
         <>
             <section className={`${styles["contentDetail"]} ${styles["villasDetail"]} ${styles["blogList"]}`}>
@@ -22,94 +65,29 @@ export default function Blog() {
                             <div className={styles.bottom}>
                                 <div className={styles.row}>
                                     <ul>
-                                        <li>
-                                            <div className={styles.column}>
-                                                <Link href="#">
-                                                    <div className={styles.imgBox}>
-                                                        <div className={styles.carouselBox}>
-                                                            <div className={styles.bgImage} style={{ backgroundImage: "url(/images/k_blob-2022311-2233846.png)" }}></div>
-                                                            <div className={styles.navButtons}>
-                                                                <button onClick={(e) => handleImageButton(e)}></button>
-                                                                <button onClick={(e) => handleImageButton(e)} className={styles.next}></button>
+                                        {
+                                            data.map(item => (
+                                                <li key={item.id}>
+                                                    <div className={styles.column}>
+                                                        <Link href={`bloglar/${item.id}-` + generateBlogLink(item.title)}>
+                                                            <div className={styles.imgBox}>
+                                                                <div className={styles.carouselBox}>
+                                                                    <div className={styles.bgImage} style={{ backgroundImage: `url(/images/${item.photoName})` }}></div>
+                                                                    <div className={styles.navButtons}>
+                                                                        <button onClick={(e) => handleImageButton(e)}></button>
+                                                                        <button onClick={(e) => handleImageButton(e)} className={styles.next}></button>
+                                                                    </div>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className={styles.textBox}>
-                                                        <div className={styles.title}>Ölüdeniz Nerededir ve Nasıl Gidilir ?</div>
-                                                        <div className={styles.desc}>
-                                                            Türkiye’nin en güzel tatil yerlerinden biri olan Ölüdeniz’e ulaşım gayet kolaydır.
-                                                            Kara yolu, hava yolu ve deniz yolu gibi çeşitlilik barındıran ulaşım seçenekleri ile ulaşım mümkündür.
-                                                        </div>
-                                                    </div>
-                                                </Link>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div className={styles.column}>
-                                                <Link href="#">
-                                                    <div className={styles.imgBox}>
-                                                        <div className={styles.carouselBox}>
-                                                            <div className={styles.bgImage} style={{ backgroundImage: "url(/images/k_blob-2022311-2235903.png)" }}></div>
-                                                            <div className={styles.navButtons}>
-                                                                <button onClick={(e) => handleImageButton(e)}></button>
-                                                                <button onClick={(e) => handleImageButton(e)} className={styles.next}></button>
+                                                            <div className={styles.textBox}>
+                                                                <div className={styles.title}>{item.title}</div>
+                                                                <div className={styles.desc}>{item.desc}</div>
                                                             </div>
-                                                        </div>
+                                                        </Link>
                                                     </div>
-                                                    <div className={styles.textBox}>
-                                                        <div className={styles.title}>Fethiyede Terkedilmiş Bir Cennet: Kayaköy</div>
-                                                        <div className={styles.desc}>
-                                                            Kayaköy gün geçtikçe fark edilen ve daha fazla ziyaretçi çeken mekanların başında geliyor.
-                                                            Bölgenin kendine has güzelliği içinde yarı yıkılmış tarihi evler bir tepenin yamaçlarını tamamen kaplıyor.
-                                                        </div>
-                                                    </div>
-                                                </Link>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div className={styles.column}>
-                                                <Link href="#">
-                                                    <div className={styles.imgBox}>
-                                                        <div className={styles.carouselBox}>
-                                                            <div className={styles.bgImage} style={{ backgroundImage: "url(/images/k_blob-2022414-1328732.png)" }}></div>
-                                                            <div className={styles.navButtons}>
-                                                                <button onClick={(e) => handleImageButton(e)}></button>
-                                                                <button onClick={(e) => handleImageButton(e)} className={styles.next}></button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className={styles.textBox}>
-                                                        <div className={styles.title}>Fethiye At Turu</div>
-                                                        <div className={styles.desc}>
-                                                            Fethiye at turu haftanın her günü yapılmaktadır. Hava şartlarının müsaade ettiği zamanlarda günlük iki, üç seans
-                                                            yapılabilmekte, böylece en uygun zamanda gezmelere katılma imkanınız olmaktadır.
-                                                        </div>
-                                                    </div>
-                                                </Link>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div className={styles.column}>
-                                                <Link href="#">
-                                                    <div className={styles.imgBox}>
-                                                        <div className={styles.carouselBox}>
-                                                            <div className={styles.bgImage} style={{ backgroundImage: "url(/images/k_blob-2022414-1325688.png)" }}></div>
-                                                            <div className={styles.navButtons}>
-                                                                <button onClick={(e) => handleImageButton(e)}></button>
-                                                                <button onClick={(e) => handleImageButton(e)} className={styles.next}></button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className={styles.textBox}>
-                                                        <div className={styles.title}>Fethiye Kiralık Villa</div>
-                                                        <div className={styles.desc}>
-                                                            Hem ülkemizin çeşitli bölgelerinden hem de yurtdışından gelen on binlerce kişiye ev sahipliği yapmakta olan bölge için
-                                                            kiralık villa ve apart hizmeti sunmakta olan birçok farklı firma da mevcuttur.
-                                                        </div>
-                                                    </div>
-                                                </Link>
-                                            </div>
-                                        </li>
+                                                </li>
+                                            ))
+                                        }
                                     </ul>
                                 </div>
                             </div>
