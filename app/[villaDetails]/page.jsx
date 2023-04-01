@@ -13,6 +13,10 @@ import Calendar from "@/components/villaDetail/leftBar/calendar/calendar";
 import DistanceRuler from "@/components/villaDetail/leftBar/distanceRuler/distanceRuler";
 import Gallery from "@/components/villaDetail/leftBar/gallery/gallery";
 import PriceTable from "@/components/villaDetail/leftBar/priceTable/priceTable";
+import LightGallery from 'lightgallery/react';
+import lgZoom from 'lightgallery/plugins/zoom';
+import lgVideo from 'lightgallery/plugins/video';
+
 var qs = require('qs');
 
 
@@ -43,10 +47,10 @@ export default function VillaDetail({ params }) {
                                     //fields: ["url"],
                                     populate: {
                                         formats: {
-                                            populate: ["small","thumbnail","medium"]
+                                            populate: ["small", "thumbnail", "medium"]
                                         }
                                     },
-                                    sort:["name:asc"]
+                                    sort: ["name:asc"]
                                 }
                             }
                         },
@@ -161,7 +165,7 @@ export default function VillaDetail({ params }) {
 
     }, [villaId])
 
-   
+
 
     const [isDescOpen, setisDescOpen] = useState(false)
     if (villa) {
@@ -273,11 +277,22 @@ export default function VillaDetail({ params }) {
                                     <li className={styles.popupImage}>
                                         <div className={styles.title}>Tanıtım Videosu</div>
                                         <div className={styles.box}>
-                                            <Link href="#">
+                                            <LightGallery plugins={[lgZoom, lgVideo]} elementClassNames={styles.videoContainer}>
+                                                <a
+                                                    data-src="https://www.youtube.com/watch?v=xrygk3V9iN0"
+                                                >
+                                                    <img
+                                                        className={styles.videoItem}
+                                                        alt=""
+                                                        src="https://i.ytimg.com/vi/xrygk3V9iN0/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFTyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLA5ZURgeeqLD84wGnU2HtlxLtmeGA"
+                                                    />
+                                                </a>
+                                            </LightGallery>
+                                            {/* <Link href="#">
                                                 <div className={styles.imageBox}>
                                                     <div className={styles.img} style={{ backgroundImage: `url(https://labirentfethiye.com/image/b_villa-kose-2022322-1041451.jpg)` }}></div>
                                                 </div>
-                                            </Link>
+                                            </Link> */}
                                         </div>
                                     </li>
                                 </ul>
@@ -305,7 +320,7 @@ export default function VillaDetail({ params }) {
                             </div>
                         </div>
                     </div>
-                </section>
+                </section >
             </>
         )
     }

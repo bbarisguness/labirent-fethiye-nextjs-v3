@@ -263,6 +263,11 @@
     transform: scale(1.1);
 }
 
+.villaDetail .dualBoxes ul li.popupImage:hover .box .videoItem {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
 .villaDetail .dualBoxes ul li .title {
     width: 100%;
     font-weight: 600;
@@ -474,6 +479,15 @@
     border: 1px solid #D9D9E4;
     border-radius: 8px;
     box-shadow: 0px 40px 30px rgb(25 25 46 / 4%);
+}
+
+.videoContainer {
+    height: 100%;
+}
+
+.videoItem {
+    width: 100%;
+    transition: all .3s ease-in-out;
 }
 
 @media screen and (max-width: 1699px) {
