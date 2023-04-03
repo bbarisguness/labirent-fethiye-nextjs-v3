@@ -65,7 +65,7 @@ export default function VillaCard({ data, type, from }) {
                             </div>
                             <div className={styles.textBox}>
                                 <div className={styles.title}>{data.attributes.name}</div>
-                                {data.attributes.region.data ? <div className={styles.location}>Fethiye / {data.attributes?.region?.data?.attributes?.name}</div> : <></>}
+                                {data.attributes.regions?.data[0] ? <div className={styles.location}>Fethiye / {data.attributes?.regions?.data[0]?.attributes?.name}</div> : <></>}
                                 <div className={styles.priceTitle}>{type == "villa" ? "Günlük Fiyat Aralığı" : "Haftalık Fiyat Aralığı"}</div>
                                 {data.attributes.price_tables.data ? <div className={styles.price}>{data.attributes.price_tables?.data[1]?.attributes?.price} TL - {data.attributes.price_tables?.data[0]?.attributes?.price} TL</div> : <></>}
                                 <div className={styles.features}>
@@ -123,7 +123,7 @@ export default function VillaCard({ data, type, from }) {
                             </div>
                             <div className={styles.textBox}>
                                 <div className={styles.title}>{data.attributes.name}</div>
-                                {data.attributes.region.data ? <div className={styles.location}>Fethiye / {data.attributes.region.data.attributes?.name}</div> : <></>}
+                                {data.attributes.regions?.data[0] ? <div className={styles.location}>Fethiye / {data.attributes.regions?.data[0].attributes?.name}</div> : <></>}
                                 <div className={styles.priceTitle}>{type == "villa" ? "Günlük Fiyat Aralığı" : "Haftalık Fiyat Aralığı"}</div>
                                 {data.attributes.price_tables.data ? <div className={styles.price}>{data.attributes.price_tables?.data[1]?.attributes?.price} TL - {data.attributes.price_tables?.data[0]?.attributes?.price} TL</div> : <></>}
                                 <div className={styles.features}>

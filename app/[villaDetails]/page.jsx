@@ -35,7 +35,7 @@ export default function VillaDetail({ params }) {
 
             const query = qs.stringify(
                 {
-                    //populate: ["gallery.image", "categories", "distance_rulers", "price_tables.price_type", "region", "localizations"]
+                    //populate: ["gallery.image", "categories", "distance_rulers", "price_tables.price_type", "regions", "localizations"]
                     populate: {
                         locationImage: {
                             fields: ['formats']
@@ -60,7 +60,7 @@ export default function VillaDetail({ params }) {
                         categories: {
                             fields: ["name"]
                         },
-                        region: {
+                        regions: {
                             fields: ["name"]
                         },
                         price_tables: {
@@ -100,7 +100,7 @@ export default function VillaDetail({ params }) {
             const query2 = qs.stringify(
                 {
                     // filters: {
-                    //     region: {
+                    //     regions: {
                     //         id: '2'
                     //     }
                     // },
@@ -124,7 +124,7 @@ export default function VillaDetail({ params }) {
                         categories: {
                             fields: ["name"]
                         },
-                        region: {
+                        regions: {
                             fields: ["name"]
                         },
                         price_tables: {
@@ -199,7 +199,7 @@ export default function VillaDetail({ params }) {
                                         <div className={styles.features}>
                                             <div className={styles.colon}>
                                                 <i className={styles.pin_icon}></i>
-                                                <span>Fethiye / {villa.attributes.region?.data?.attributes?.name}</span>
+                                                <span>Fethiye / {villa.attributes.regions?.data[0]?.attributes?.name}</span>
                                             </div>
                                             <div className={styles.colon}>
                                                 <i className={styles.person_icon}></i>
