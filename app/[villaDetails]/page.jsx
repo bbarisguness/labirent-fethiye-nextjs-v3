@@ -82,6 +82,7 @@ export default function VillaDetail({ params }) {
                         console.log(result.data);
                         //console.log(result.data.attributes.distance_rulers.data)                            
                         //console.log(result.data[0].attributes.gallery.data.attributes.image.data);
+                        //console.log(result.data.attributes.gallery.data.attributes.video);
                     },
                     (error) => {
 

@@ -19,7 +19,41 @@ export default function List() {
 
     const query = qs.stringify(
         {
-            populate: ["gallery.image", "price_tables.price_type", "region", "localizations"]
+            populate: {
+                distance_rulers: {
+                    fields: ['name', 'value'],
+                },
+                gallery: {
+                    populate: {
+                        image: {
+                            //populate: "*"
+                            //fields: ["url"],
+                            populate: {
+                                formats: {
+                                    populate: ["small","thumbnail","medium"]
+                                }
+                            },
+                            sort:["name:asc"]
+                        }
+                    }
+                },
+                region: {
+                    fields: ["name"]
+                },
+                price_tables: {
+                    sort: ['line:asc'],
+                    fields: ["title", "description", "price", "firstTime", "lastTime", "line"],
+                    populate: {
+                        price_type: {
+                            fields: ["slug"]
+                        }
+                    }
+
+                }
+            },
+
+
+            //populate: ["gallery.image", "price_tables.price_type", "region", "localizations"]
         },
         {
             encodeValuesOnly: true, // prettify URL
