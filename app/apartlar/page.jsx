@@ -20,7 +20,7 @@ export default function List() {
     const query = qs.stringify(
         {
             filters: {
-                isVilla: {
+                isApart: {
                     $eq: true
                 }
             },
@@ -35,10 +35,10 @@ export default function List() {
                             //fields: ["url"],
                             populate: {
                                 formats: {
-                                    populate: ["small","thumbnail","medium"]
+                                    populate: ["small", "thumbnail", "medium"]
                                 }
                             },
-                            sort:["name:asc"]
+                            sort: ["name:asc"]
                         }
                     }
                 },
@@ -91,8 +91,8 @@ export default function List() {
                         <div className="box">
                             <div className="top">
                                 <div className="titleBox">
-                                    <div className="title">Tüm Villaları</div>
-                                    <div className="subTitle">Toplam {villas.length} adet tesis listelendi.</div>
+                                    <div className="title">Tüm Apartlar</div>
+                                    <div className="subTitle">Toplam {villas.length} adet apart listelendi.</div>
                                 </div>
                             </div>
                             <div className="bottom">

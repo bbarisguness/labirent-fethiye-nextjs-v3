@@ -12,7 +12,7 @@ export default function TestimonialCard({ data }) {
                 </div>
                 <div className={styles.textBox}>
                     <div className={styles.title}>{data.attributes.villa.data.attributes.name}</div>
-                    <div className={styles.location}>Fethiye / {data.attributes.villa.data.attributes.region.data.attributes.name}</div>
+                    <div className={styles.location}>Fethiye / {data.attributes.villa?.data?.attributes?.region?.data?.attributes.name}</div>
                 </div>
             </div>
             <div className={styles.ulCenter}>

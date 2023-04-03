@@ -37,8 +37,11 @@ export default function VillaDetail({ params }) {
                 {
                     //populate: ["gallery.image", "categories", "distance_rulers", "price_tables.price_type", "region", "localizations"]
                     populate: {
+                        locationImage: {
+                            fields: ['formats']
+                        },
                         distance_rulers: {
-                            fields: ['name', 'value'],
+                            fields: ['name', 'value', 'icon'],
                         },
                         gallery: {
                             populate: {
@@ -191,31 +194,31 @@ export default function VillaDetail({ params }) {
                         <div className={styles.container}>
                             <div className={styles.box}>
                                 <div className={styles.left}>
-                                    <div className={styles.detailTitle}>Villa Almina</div>
+                                    <div className={styles.detailTitle}>{villa.attributes.name}</div>
                                     <div className={styles.villaInformation}>
                                         <div className={styles.features}>
                                             <div className={styles.colon}>
                                                 <i className={styles.pin_icon}></i>
-                                                <span>Fethiye / Ölüdeniz</span>
+                                                <span>Fethiye / {villa.attributes.region?.data?.attributes?.name}</span>
                                             </div>
                                             <div className={styles.colon}>
                                                 <i className={styles.person_icon}></i>
-                                                <span>6 Kişi</span>
+                                                <span>{villa.attributes.person} Kişi</span>
                                             </div>
                                             <div className={styles.colon}>
                                                 <i className={styles.room_icon}></i>
-                                                <span>3 Oda</span>
+                                                <span>{villa.attributes.room} Oda</span>
                                             </div>
                                             <div className={styles.colon}>
                                                 <i className={styles.bath_icon}></i>
-                                                <span>3 Banyo</span>
+                                                <span>{villa.attributes.bath} Banyo</span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div className={styles.right}>
                                     <div className={styles.priceType}>Gecelik En Düşük</div>
-                                    <div className={styles.price}>1.900 - 5.900 TL</div>
+                                    <div className={styles.price}> {villa.attributes.price_tables?.data[1]?.attributes?.price} TL - {villa.attributes.price_tables?.data[0]?.attributes?.price} TL</div>
                                 </div>
                             </div>
                         </div>
@@ -249,7 +252,7 @@ export default function VillaDetail({ params }) {
                                     </div>
                                     <DistanceRuler data={villa.attributes.distance_rulers} />
                                     <PriceTable data={villa.attributes.price_tables} />
-                                    {/* <Calendar ready={ready} /> */}
+                                    <Calendar ready={ready} />
                                 </div>
                                 <div className={styles.right}>
                                     <div className={styles.general}>
@@ -266,10 +269,10 @@ export default function VillaDetail({ params }) {
                                 <ul>
                                     <li>
                                         <div className={styles.title}>Konum</div>
-                                        <div className={styles.box} style={{ backgroundImage: `url(https://labirentfethiye.com/image/b_villa-kose-2022322-1041451.jpg)`, backgroundPosition: "center", backgroundSize: "100% 100%" }}>
+                                        <div className={styles.box} style={{ backgroundImage: `url(http://3.127.136.179:1337${villa.attributes.locationImage?.data?.attributes?.formats?.medium.url})`, backgroundPosition: "center", backgroundSize: "100% 100%" }}>
                                             {/* Harita Gelecek */}
                                             <div className={styles.linkBox} style={{ position: "relative", width: "50px", height: "50px", left: "15px", top: "15px" }}>
-                                                <Link className={styles.blueButton} href="#">
+                                                <Link className={styles.blueButton} href={villa.attributes.locationLink ? villa.attributes.locationLink : '#'} target="_blank">
                                                     <span>Konum</span>
                                                 </Link>
                                             </div>
@@ -278,22 +281,17 @@ export default function VillaDetail({ params }) {
                                     <li className={styles.popupImage}>
                                         <div className={styles.title}>Tanıtım Videosu</div>
                                         <div className={styles.box}>
+
                                             <LightGallery plugins={[lgZoom, lgVideo]} elementClassNames={styles.videoContainer}>
                                                 <a
-                                                    data-src="https://www.youtube.com/watch?v=xrygk3V9iN0"
+                                                    data-src={villa.attributes.gallery.data.attributes.video}
                                                 >
-                                                    <img
-                                                        className={styles.videoItem}
-                                                        alt=""
-                                                        src="https://i.ytimg.com/vi/xrygk3V9iN0/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFTyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLA5ZURgeeqLD84wGnU2HtlxLtmeGA"
-                                                    />
+                                                    <div className={styles.imageBox}>
+                                                        <div className={styles.img} style={{ backgroundImage: `url(http://3.127.136.179:1337${villa.attributes.gallery.data.attributes.image.data[0].attributes.formats.medium.url})` }}></div>
+                                                    </div>
                                                 </a>
                                             </LightGallery>
-                                            {/* <Link href="#">
-                                                <div className={styles.imageBox}>
-                                                    <div className={styles.img} style={{ backgroundImage: `url(https://labirentfethiye.com/image/b_villa-kose-2022322-1041451.jpg)` }}></div>
-                                                </div>
-                                            </Link> */}
+
                                         </div>
                                     </li>
                                 </ul>
@@ -326,7 +324,15 @@ export default function VillaDetail({ params }) {
         )
     }
     else {
-        return (<>loading</>)
+        return (
+            <div className={"loadingBox"}>
+                <div className="loadingEffect">
+                    <div className="loadingLogo">
+                        <div className="loadingLogo" style={{ backgroundImage: "url(/images/labirent.png)" }}></div>
+                    </div>
+                </div>
+            </div>
+        )
     }
 
 }

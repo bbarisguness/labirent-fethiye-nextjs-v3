@@ -24,6 +24,9 @@ export default function Villa() {
                     id: {
                         $eq: activeTabIndex
                     }
+                },
+                isVilla: {
+                    $eq: true
                 }
             },
             pagination: {

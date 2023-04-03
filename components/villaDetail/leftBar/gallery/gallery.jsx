@@ -30,7 +30,7 @@ export default function Gallery({ data }) {
                                         <div className={styles.img} style={{ backgroundImage: `url(http://3.127.136.179:1337${data.attributes.url})` }}></div>
                                     </div>
                                 </div>
-                                {/* <Image src={`http://3.127.136.179:1337${data.attributes.url}`} width={1} height={1} style={{ display: 'none' }} /> */}
+                                 <Image src={`http://3.127.136.179:1337${data.attributes.formats.medium.url}`} width={96} height={76} style={{ display: 'none' }} /> 
                             </Link>)
                             :
                             (
@@ -38,26 +38,26 @@ export default function Gallery({ data }) {
                                     (<Link key={index} className={`${styles['lightBoxItem']} ${styles['lastLi']}`} href={`http://3.127.136.179:1337${data.attributes.url}`}>
                                         <div className={styles.lightBoxItemChild}>
                                             <div className={styles.imageBox}>
-                                                <div className={styles.img} style={{ backgroundImage: `url(http://3.127.136.179:1337${data.attributes.formats.thumbnail.url})` }}></div>                                               
+                                                <div className={styles.img} style={{ backgroundImage: `url(http://3.127.136.179:1337${data.attributes.formats.small.url})` }}></div>                                               
                                             </div>
                                             <span>+28</span>
                                         </div>
-                                        {/* <Image src={`http://3.127.136.179:1337${data.attributes.url}`} width={1} height={1} style={{ display: 'none' }} /> */}
+                                         <Image src={`http://3.127.136.179:1337${data.attributes.formats.medium.url}`} width={96} height={76} style={{ display: 'none' }} /> 
                                     </Link>)
                                     :
                                     (<Link key={index} className={styles.lightBoxItem} href={`http://3.127.136.179:1337${data.attributes.url}`}>
                                         <div className={styles.lightBoxItemChild}>
                                             <div className={styles.imageBox}>
-                                                <div className={styles.img} style={{ backgroundImage: `url(http://3.127.136.179:1337${data.attributes.formats.thumbnail.url})` }}></div>
+                                                <div className={styles.img} style={{ backgroundImage: `url(http://3.127.136.179:1337${data.attributes.formats.small.url})` }}></div>
                                             </div>
                                         </div>
-                                        {/* <Image src={`http://3.127.136.179:1337${data.attributes.url}`} width={1} height={1} style={{ display: 'none' }} /> */}
+                                         <Image src={`http://3.127.136.179:1337${data.attributes.formats.medium.url}`} width={96} height={76} style={{ display: 'none' }} /> 
                                     </Link>)
                             ))
                             :
                             (<Link key={index} style={{ display: "none" }} href={`http://3.127.136.179:1337${data.attributes.url}`}>
 
-                                {/* <Image src={`http://3.127.136.179:1337${data.attributes.url}`} width={1} height={1} style={{ display: 'none' }} /> */}
+                                 <Image src={`http://3.127.136.179:1337${data.attributes.formats.medium.url}`} width={96} height={76} style={{ display: 'none' }} /> 
                             </Link>)
 
 

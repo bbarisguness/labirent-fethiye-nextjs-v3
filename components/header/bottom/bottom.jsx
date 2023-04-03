@@ -75,7 +75,7 @@ export default function HeaderBottom({ from }) {
                                     </div>
                                 </li>
                                 <li className={styles.menu_li}>
-                                    <Link href="#" className={styles.menuLink}>
+                                    <Link href="/apartlar" className={styles.menuLink}>
                                         <span>KİRALIK APARTLAR</span>
                                     </Link>
                                 </li>

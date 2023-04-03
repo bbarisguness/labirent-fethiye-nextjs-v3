@@ -126,7 +126,7 @@ export default function Reservation() {
                     <div className={styles.colonTitle}>Kişi Sayısı</div>
                     <div onClick={() => setNumberPeople(!isNumberPeopleMenuOpen)} className={styles.colonInput}>
                         <Link className={styles.peopleIcon} href="#"></Link>
-                        <input ref={inputRefNumberOfPeople} type="text" placeholder="2 Misafir, 1 Bebek" readOnly disabled></input>
+                        <input ref={inputRefNumberOfPeople} type="text" placeholder="0 Misafir, 0 Bebek" readOnly disabled></input>
                     </div>
                     <div className={`${styles["numberPeopleOpen"]} ${isNumberPeopleMenuOpen && styles["active"]}`}>
                         <ul>

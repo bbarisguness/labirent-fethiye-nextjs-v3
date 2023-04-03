@@ -12,6 +12,11 @@ export default function Apart() {
 
     const query = qs.stringify(
         {
+            filters: {
+                isApart: {
+                    $eq: true
+                }
+            },
             pagination: {
                 page: 1,
                 pageSize: 4,

@@ -259,6 +259,10 @@
     opacity: 1;
 }
 
+.villaDetail .dualBoxes ul li.popupImage:hover {
+    cursor: pointer;
+}
+
 .villaDetail .dualBoxes ul li.popupImage:hover .box a .imageBox .img {
     transform: scale(1.1);
 }
@@ -483,6 +487,10 @@
 
 .videoContainer {
     height: 100%;
+    display: flex;
+    position: relative;
+    float: none;
+    overflow: visible;
 }
 
 .videoItem {

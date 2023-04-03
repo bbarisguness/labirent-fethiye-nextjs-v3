@@ -3,7 +3,7 @@ import Link from "next/link"
 
 export default function DistanceRuler({ data }) {
 
-    //console.log(data);
+    console.log(data);
 
     return (
         <>
@@ -21,8 +21,8 @@ export default function DistanceRuler({ data }) {
                                              <div className={styles.column}>
                                                  <Link href="#">
                                                      <div className={styles.iconBox}>
-                                                         <i style={{ backgroundImage: `url(/images/shopping-cart.png)` }}></i>
-                                                         <i className={styles.two_i} style={{ backgroundImage: `url(/images/shopping-cart-hover.png)` }}></i>
+                                                         <i style={{ backgroundImage: `url(/images/${data.attributes.icon}.png)` }}></i>
+                                                         <i className={styles.two_i} style={{ backgroundImage: `url(/images/${data.attributes.icon}-hover.png)` }}></i>
                                                      </div>
                                                      <div className={styles.title}>{data.attributes.name}</div>
                                                      <div className={styles.distance}>{data.attributes.value}</div>
