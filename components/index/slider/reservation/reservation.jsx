@@ -64,7 +64,7 @@ export default function ReservationBox() {
     const girisveCikisTarihiniAl = () => {
         let startDate = reservationDate.startDate
         let endDate = reservationDate.endDate
-        let string = startDate.getDate() + "-" + (startDate.getMonth() + 1) + "-" + startDate.getFullYear() + " / " + endDate.getDate() + "-" + (endDate.getMonth() + 1) + "-" + endDate.getFullYear()
+        let string = startDate.getDate() + "-" + (startDate.getMonth() + 1) + "-" + startDate.getFullYear() + " - " + endDate.getDate() + "-" + (endDate.getMonth() + 1) + "-" + endDate.getFullYear()
         setdatePlaceHolder(string)
     }
 

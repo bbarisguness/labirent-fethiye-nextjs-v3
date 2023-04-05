@@ -27,7 +27,7 @@ export default function Reservation() {
     const girisveCikisTarihiniAl = () => {
         let startDate = reservationDate.startDate
         let endDate = reservationDate.endDate
-        let string = startDate.getDate() + "-" + (startDate.getMonth() + 1) + "-" + startDate.getFullYear() + " / " + endDate.getDate() + "-" + (endDate.getMonth() + 1) + "-" + endDate.getFullYear()
+        let string = startDate.getDate() + "-" + (startDate.getMonth() + 1) + "-" + startDate.getFullYear() + " - " + endDate.getDate() + "-" + (endDate.getMonth() + 1) + "-" + endDate.getFullYear()
         setdatePlaceHolder(string)
     }
 
@@ -167,12 +167,12 @@ export default function Reservation() {
                     </div>
                 </div>
                 <div className={styles.linkBox}>
-                     {/* <Link className={styles.blueButtonArrow} href="javascript" onClick={handleClick}>
+                    {/* <Link className={styles.blueButtonArrow} href="javascript" onClick={handleClick}>
                         <span>Villa Müsaitliği Sorgula</span>
                     </Link>  */}
                     <button className={styles.blueButtonArrow} onClick={handleClick}>
                         <span>Villa Müsaitliği Sorgula</span>
-                    </button> 
+                    </button>
                 </div>
             </div>
         </div>

@@ -238,10 +238,8 @@ export default function VillaDetail({ params }) {
                                 <div className={styles.left}>
                                     <div className={styles.villaDetailTitle}>Villa Açıklama</div>
                                     <div className={styles.villaDetailDesc}>
-                                        <div className={`${styles["desc"]} ${isDescOpen && styles["active"]}`} >
-                                            <p>
-                                                {villa.attributes.description}
-                                            </p>
+                                        <div dangerouslySetInnerHTML={{ __html: "<p>a</p><p>b</p>" }} className={`${styles["desc"]} ${isDescOpen && styles["active"]}`} >
+                                            {/* {villa.attributes.description} */}
                                         </div>
                                         <div className={`${styles["readMore"]} ${isDescOpen && styles["active"]}`}>
                                             <div className={styles.allButton}>
