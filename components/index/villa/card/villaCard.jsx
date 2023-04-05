@@ -6,11 +6,23 @@ export default function VillaCard({ data, type, from }) {
 
     //console.log(data);
 
+    // const a = Math.max(...data.attributes.price_tables.data.map(o => o.attributes.price))
+    // console.log(a);
+
+
+
+
     const [imageIndex, setImageIndex] = useState(0)
     const [image, setImage] = useState()
 
     useEffect(() => {
         setImage(data?.attributes?.gallery?.data?.attributes?.image?.data[0]?.attributes.url)
+
+
+
+        //console.log(data.attributes.price_tables.data.length);
+
+
     }, [data])
 
     useEffect(() => {
@@ -67,7 +79,7 @@ export default function VillaCard({ data, type, from }) {
                                 <div className={styles.title}>{data.attributes.name}</div>
                                 {data.attributes.regions?.data[0] ? <div className={styles.location}>Fethiye / {data.attributes?.regions?.data[0]?.attributes?.name}</div> : <></>}
                                 <div className={styles.priceTitle}>{type == "villa" ? "Günlük Fiyat Aralığı" : "Haftalık Fiyat Aralığı"}</div>
-                                {data.attributes.price_tables.data ? <div className={styles.price}>{data.attributes.price_tables?.data[1]?.attributes?.price} TL - {data.attributes.price_tables?.data[0]?.attributes?.price} TL</div> : <></>}
+                                {data.attributes.price_tables.data ? <div className={styles.price}>{data.attributes.price_tables?.data[0]?.attributes?.price} TL - {data.attributes.price_tables?.data[data.attributes.price_tables?.data.lenght]?.attributes?.price} TL</div> : <></>}
                                 <div className={styles.features}>
                                     <div className={styles.colon}>
                                         <i className={styles.person_icon}></i>
@@ -99,7 +111,7 @@ export default function VillaCard({ data, type, from }) {
 
         if (data.attributes) {
 
-            //console.log(data.attributes.gallery?.data?.attributes.image.data.length);
+            //    console.log(data.attributes.gallery?.data?.attributes.image.data.length);
 
             return (
                 <li id={styles.cardContainer}>
@@ -125,7 +137,8 @@ export default function VillaCard({ data, type, from }) {
                                 <div className={styles.title}>{data.attributes.name}</div>
                                 {data.attributes.regions?.data[0] ? <div className={styles.location}>Fethiye / {data.attributes.regions?.data[0].attributes?.name}</div> : <></>}
                                 <div className={styles.priceTitle}>{type == "villa" ? "Günlük Fiyat Aralığı" : "Haftalık Fiyat Aralığı"}</div>
-                                {data.attributes.price_tables.data ? <div className={styles.price}>{data.attributes.price_tables?.data[1]?.attributes?.price} TL - {data.attributes.price_tables?.data[0]?.attributes?.price} TL</div> : <></>}
+                                {/* {data.attributes.price_tables.data ? <div className={styles.price}>{data.attributes.price_tables?.data[0]?.attributes?.price} TL - {data.attributes.price_tables?.data[(data.attributes.price_tables.data.length - 1)]?.attributes?.price} TL</div> : <></>} */}
+                                 {data.attributes.price_tables.data ? <div className={styles.price}>{Math.min(...data.attributes.price_tables.data.map(o => o.attributes.price))} TL - {Math.max(...data.attributes.price_tables.data.map(o => o.attributes.price))} TL</div> : <></>}
                                 <div className={styles.features}>
                                     <div className={styles.colon}>
                                         <i className={styles.person_icon}></i>

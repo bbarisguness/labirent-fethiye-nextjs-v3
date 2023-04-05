@@ -80,7 +80,7 @@ export default function List() {
     }, [])
 
     useEffect(() => {
-        console.log("Sayfa sırası: " + (activeListItemIndex + 1))
+        //console.log("Sayfa sırası: " + (activeListItemIndex + 1))
     }, [activeListItemIndex])
 
     return (

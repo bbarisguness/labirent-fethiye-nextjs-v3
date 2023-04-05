@@ -19,21 +19,25 @@ export default function Villa() {
 
     const query = qs.stringify(
         {
-            filters: {
-                categories: {
-                    id: {
-                        $eq: activeTabIndex
-                    }
-                },
-                isVilla: {
-                    $eq: true
-                }
-            },
-            pagination: {
-                page: 1,
-                pageSize: 8,
-            },
-            populate: ["gallery.image", "price_tables.price_type", "region", "localizations"]
+           
+             filters: {
+                 categories: {
+                     id: {
+                         $eq: activeTabIndex
+                     }
+                 },
+                 isVilla: {
+                     $eq: true
+                 }
+             },
+             price_tables:{
+                 sort: ['price:desc'],
+             },
+             pagination: {
+                 page: 1,
+                 pageSize: 8,
+             },
+             populate: ["gallery.image", "price_tables.price_type", "region", "localizations"]
         },
         {
             encodeValuesOnly: true, // prettify URL
