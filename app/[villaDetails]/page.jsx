@@ -86,7 +86,7 @@ export default function VillaDetail({ params }) {
                     (result) => {
                         setReady(true)
                         setVilla(result.data)
-                        console.log(result.data);
+                        //console.log(result.data);
                         //console.log(result.data.attributes.distance_rulers.data)                            
                         //console.log(result.data[0].attributes.gallery.data.attributes.image.data);
                         //console.log(result.data.attributes.gallery.data.attributes.video);
@@ -218,8 +218,9 @@ export default function VillaDetail({ params }) {
                                 </div>
                                 <div className={styles.right}>
                                     <div className={styles.priceType}>Gecelik En Düşük</div>
-                                    <div className={styles.price}> {villa.attributes.price_tables?.data[1]?.attributes?.price} TL - {villa.attributes.price_tables?.data[0]?.attributes?.price} TL</div>
+                                    <div className={styles.price}> {Math.min(...villa.attributes.price_tables.data.map(o => o.attributes.price))} TL - {Math.max(...villa.attributes.price_tables.data.map(o => o.attributes.price))} TL</div>
                                 </div>
+                                
                             </div>
                         </div>
                     </div>
