@@ -3,7 +3,7 @@ import Link from "next/link"
 
 export default function DistanceRuler({ data }) {
 
-    console.log(data);
+    //console.log(data);
 
     return (
         <>

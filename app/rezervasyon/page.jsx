@@ -5,9 +5,11 @@ import { useEffect, useState } from "react"
 import { Formik } from "formik"
 import * as Yup from "yup"
 import citiess from "../../data/tr.json"
+import { useSelector } from "react-redux";
 
 export default function Reservation() {
 
+    const { reservationStartDate, reservationEndDate, numberOfAdults, numberOfChild, numberOfBabies } = useSelector(state => state.globalState)
 
 
     const [citys, setCitys] = useState(null)
@@ -453,7 +455,7 @@ export default function Reservation() {
                                             <div className={styles.date}>
                                                 <div className={styles.title}>Giriş</div>
                                                 <div className={styles.textBox}>
-                                                    <span>10 Kasım 2021 Cuma</span>
+                                                    <span>{reservationStartDate}</span>
                                                 </div>
                                             </div>
                                             <div className={styles.date}>
