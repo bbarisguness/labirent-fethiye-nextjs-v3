@@ -114,11 +114,12 @@
     background-color: transparent;
     overflow: hidden;
     color: #ffffff;
+    background: linear-gradient(to bottom right,#000000 50%,transparent 50%);
   }
   
   .isLateCheckout > span {
-    background: white;
-    color: #000000;
+    /*background: white;*/
+    color: #4f4f4f;
     padding: 0px 3px;
   }
   
