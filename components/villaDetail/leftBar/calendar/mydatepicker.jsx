@@ -57,28 +57,46 @@ export default function MyDatePicker({ year = 2023, reservationDates = ["2022/11
         let numberOfMonth = getDayCountOfMMonth(year, month) // Aydaki gün sayısı 2.parametre olan 2 Mart ayına denk gelir fonksiyondan 31 döner
         let firstDay = getFirstDayOfMonth(year, month)
         let isFirstRowInEnded = false
-        let reservationDateStrings = reservationDates[reservationIndex].split('-')
+        let reservationDateStrings
+
+
+        if (reservationDates[reservationIndex]) {
+            reservationDateStrings = reservationDates[reservationIndex].split('-')
+        }
+
+
         let reservationDates2 = [] // reservasyon tarihi buraya alındı(sadece 1 reservasyon başlangıç ve bitiş tarihi)
-        reservationDateStrings.map((item, index) => {
-            reservationDates2[index] = stringToDate(item)
-        })
+        if (reservationDateStrings) {
+            reservationDateStrings.map((item, index) => {
+                reservationDates2[index] = stringToDate(item)
+            })
+        }
+
 
 
         //start-end-continue background stillerini koşullara göre döndüren fonksiyon
         const backgroundColor = () => {
-            if (currentDate.getTime() == reservationDates2[0].getTime()) { isStartResarvation = true } else { isStartResarvation = false }
-            if (currentDate.getTime() > reservationDates2[0].getTime() && currentDate.getTime() < reservationDates2[1].getTime()) { isReservationContiniung = true } else { isReservationContiniung = false }
-            if (currentDate.getTime() == reservationDates2[1].getTime()) {
-                isEndResarvation = true;
-                reservationIndex++;
-                //console.log(reservationDates[reservationIndex])
-                if (reservationIndex < reservationDates.length) {
-                    reservationDateStrings = reservationDates[reservationIndex].split('-');
-                    reservationDateStrings.map((item, index) => {
-                        reservationDates2[index] = stringToDate(item)
-                    })
-                }
-            } else { isEndResarvation = false }
+
+            if (reservationDates2.length == 2) {
+                if (currentDate.getTime() == reservationDates2[0].getTime()) { isStartResarvation = true } else { isStartResarvation = false }
+                if (currentDate.getTime() > reservationDates2[0].getTime() && currentDate.getTime() < reservationDates2[1].getTime()) { isReservationContiniung = true } else { isReservationContiniung = false }
+                if (currentDate.getTime() == reservationDates2[1].getTime()) {
+                    isEndResarvation = true;
+                    reservationIndex++;
+                    if ((reservationIndex < reservationDates.length) && reservationIndex != reservationDates.length) {
+                        reservationDateStrings = reservationDates[reservationIndex].split('-');
+                        reservationDateStrings.map((item, index) => {
+                            reservationDates2[index] = stringToDate(item)
+                        })
+                    }
+                } else { isEndResarvation = false }
+            }
+            else {
+                isStartResarvation = false
+                isReservationContiniung = false
+                isEndResarvation = false
+            }
+
 
             if (reservationIndex > 0 && reservationIndex < reservationDates.length) {
 
@@ -88,6 +106,9 @@ export default function MyDatePicker({ year = 2023, reservationDates = ["2022/11
                     isReservationContiniung = true
                 }
             }
+
+
+
 
             if (isStartResarvation) {
                 return styles["day-start"]
@@ -113,12 +134,12 @@ export default function MyDatePicker({ year = 2023, reservationDates = ["2022/11
                 let dayStartingIndex = ((dayUtc.indexOf(firstDay)))
                 for (let index = 0; index <= 6; index++) {
                     row.push(
-                        <td className={`${styles['day']} ${!(index >= dayStartingIndex) ? styles['old'] : ''} ${index >= dayStartingIndex ? backgroundColor() : ''}`}>
+                        <div key={monthsTurkish[month] + "firshRowItem" + index} className={`${styles['day']} ${!(index >= dayStartingIndex) ? styles['old'] : ''} ${index >= dayStartingIndex ? backgroundColor() : ''}`}>
                             {
                                 index >= dayStartingIndex ? <div className={`${styles['day-content']}`}>{addDay()}</div>
                                     : undefined
                             }
-                        </td>
+                        </div>
                     )
                     if (index == 6) {
                         isFirstRowInEnded = true
@@ -128,9 +149,9 @@ export default function MyDatePicker({ year = 2023, reservationDates = ["2022/11
             } else {
                 for (let index = 0; index < 7; index++) {
                     row.push(
-                        <td className={`${styles['day']} ${backgroundColor()}`}>
+                        <div key={monthsTurkish[month] + "notFirstRow" + index} className={`${styles['day']} ${backgroundColor()}`}>
                             <div className={`${styles['day-content']}`}>{addDay()}</div>
-                        </td>
+                        </div>
                     )
                     if (day == numberOfMonth + 1) break
                 }
@@ -140,11 +161,11 @@ export default function MyDatePicker({ year = 2023, reservationDates = ["2022/11
 
         for (let index = 0; index < 6; index++) {
             rows.push(
-                <tr>
+                <div key={monthsTurkish[month] + "row" + index} className={styles.rowContainer}>
                     {
                         day <= numberOfMonth && getRow()
                     }
-                </tr>
+                </div>
             )
         }
         return rows
@@ -157,24 +178,24 @@ export default function MyDatePicker({ year = 2023, reservationDates = ["2022/11
         return (
             <div className={`${styles['months-container']}`} style={{ opacity: 1, display: "flex" }}>
                 {monthsTurkish.map((item, index) => (
-                    <div className={`${styles['month-container']} ${styles['month-']}`}>
-                        <table className={styles.month}>
-                            <thead>
-                                <tr>
-                                    <th className={`${styles['month-title']}`} colSpan="7">{monthsTurkish[index]}</th>
-                                </tr>
-                                <tr>
-                                    <th className={`${styles['day-header']}`}>Pzt</th>
-                                    <th className={`${styles['day-header']}`}>Sa</th>
-                                    <th className={`${styles['day-header']}`}>Çr</th>
-                                    <th className={`${styles['day-header']}`}>Pr</th>
-                                    <th className={`${styles['day-header']}`}>Cu</th>
-                                    <th className={`${styles['day-header']}`}>Ct</th>
-                                    <th className={`${styles['day-header']}`}>Pz</th>
-                                </tr>
-                            </thead>
+                    <div key={item + index} className={`${styles['month-container']} ${styles['month-']}`}>
+                        <div className={styles.month}>
+                            <div className={styles.mainTitleContainer}>
+                                <div className={styles.montTitleContainer}>
+                                    <div className={`${styles['month-title']}`} colSpan="7">{monthsTurkish[index]}</div>
+                                </div>
+                                <div className={styles.daysHeaderContainer}>
+                                    <div className={`${styles['day-header']}`}>Pzt</div>
+                                    <div className={`${styles['day-header']}`}>Sa</div>
+                                    <div className={`${styles['day-header']}`}>Çr</div>
+                                    <div className={`${styles['day-header']}`}>Pr</div>
+                                    <div className={`${styles['day-header']}`}>Cu</div>
+                                    <div className={`${styles['day-header']}`}>Ct</div>
+                                    <div className={`${styles['day-header']}`}>Pz</div>
+                                </div>
+                            </div>
                             {getRows(index)}
-                        </table>
+                        </div>
                     </div>
                 ))}
             </div>

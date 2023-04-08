@@ -15,13 +15,24 @@
     margin: 15px 0;
 }
 
-.month-container table {
+.month-container .month {
     margin: auto;
-    border-spacing: 0
 }
 
-.month-container table td,
-.month-container table th {
+.month-container .mainTitleContainer {
+    width: 210px;
+}
+
+.month-container .month .montTitleContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.month-container .month .daysHeaderContainer {
+    display: flex;
+}
+
+.month-container .month .day {
     text-align: center;
     width: 30px;
     height: 30px;
@@ -29,51 +40,52 @@
     font-size: 14px;
 }
 
-.month-container table.month th.month-title {
+.month-container .month .month-title {
     font-size: 16px;
     padding-bottom: 15px;
     user-select: none;
 }
 
-.month-container table.month th.day-header {
+.month-container .month .day-header {
     font-size: 14px;
     user-select: none;
+    width: 30px;
+    height: 30px;
 }
 
-.month-container table.month tr td,
-.month-container table.month tr th {
-    padding: 0;
-    user-select: none;
+.rowContainer {
+    display: flex;
 }
 
-.month-container table.month td.new,
-.month-container table.month td.new:hover,
-.month-container table.month td.old,
-.month-container table.month td.old:hover {
+.month-container .month .new,
+.month-container .month .new:hover,
+.month-container .month .old,
+.month-container .month .old:hover {
     background: 0 0;
     cursor: default;
 }
 
-.month-container table.month td.day .day-content {
+.month-container .month .day .day-content {
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.month-container table.month td.day.day-start {
+.month-container .month .day.day-start {
     background-color: transparent !important;
     background-image: url(/images/dateLeft.png);
 }
 
-.month-container table.month td.day.day-end {
+.month-container .month .day.day-end {
     background-color: transparent !important;
     background-image: url(/images/dateRight.png);
 }
 
-.month-container table.month td.day.day-continue {
+.month-container .month .day.day-continue {
     background-color: rgb(232, 84, 62);
 }
+
 
 @media screen and (max-width: 1499px) {
     .months-container .month-container.month- {

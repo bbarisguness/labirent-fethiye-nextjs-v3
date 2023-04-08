@@ -41,37 +41,38 @@
     border-radius: 8px;
 }
 
-.calendar-header table {
-    width: 100%
+.calendar-header div {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
 }
 
-.calendar-header table th {
+.calendar-header div div {
     font-size: 22px;
     padding: 15px 10px;
     cursor: pointer
 }
 
-.calendar-header table th:hover {
+.calendar-header div div:hover {
     background: #eee
 }
 
-.calendar-header table th.disabled,
-.calendar-header table th.disabled:hover {
+.calendar-header div div.disabled,
+.calendar-header div div.disabled:hover {
     background: 0 0;
     cursor: default;
     color: #fff;
     visibility: hidden;
 }
 
-.calendar-header table th.next,
-.calendar-header table th.prev {
+.calendar-header div div.next,
+.calendar-header div div.prev {
     width: 20px
 }
 
 .calendar-header .year-title {
     font-weight: 700;
     text-align: center;
-    height: 20px;
     width: auto
 }
 
