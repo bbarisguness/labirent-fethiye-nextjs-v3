@@ -44,7 +44,7 @@ export default function Apart() {
             )
 
         //console.log(`http://3.127.136.179:1337/api/villas?${query}`);
-    }, [aparts])
+    }, [])
 
     return (
         <div className={styles.apartments}>

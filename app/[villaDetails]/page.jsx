@@ -220,7 +220,7 @@ export default function VillaDetail({ params }) {
                                     <div className={styles.priceType}>Gecelik En Düşük</div>
                                     <div className={styles.price}> {Math.min(...villa.attributes.price_tables.data.map(o => o.attributes.price))} TL - {Math.max(...villa.attributes.price_tables.data.map(o => o.attributes.price))} TL</div>
                                 </div>
-                                
+
                             </div>
                         </div>
                     </div>
@@ -255,7 +255,7 @@ export default function VillaDetail({ params }) {
                                 </div>
                                 <div className={styles.right}>
                                     <div className={styles.general}>
-                                        <Reservation />
+                                        <Reservation villaId={villaId} />
                                         <FoodPackage />
                                     </div>
                                 </div>

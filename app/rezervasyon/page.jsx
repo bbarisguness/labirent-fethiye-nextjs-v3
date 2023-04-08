@@ -5,26 +5,106 @@ import { useEffect, useState } from "react"
 import { Formik } from "formik"
 import * as Yup from "yup"
 import citiess from "../../data/tr.json"
-import { useSelector } from "react-redux";
+var qs = require('qs');
+import { useRouter } from "next/navigation"
 
 export default function Reservation() {
-
-    const { reservationStartDate, reservationEndDate, numberOfAdults, numberOfChild, numberOfBabies } = useSelector(state => state.globalState)
-
-
+    const router = useRouter()
+    const [isPageLoading, setLoading] = useState(true)
+    const [reservationItems, setreservationItems] = useState([])
     const [citys, setCitys] = useState(null)
-
+    const [villa, setVilla] = useState([])
+    const turkishDays = ["Pazar", "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi"]
+    const turkishMonths = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"]
 
     useEffect(() => {
         setCitys(citiess.data)
+        setreservationItems(JSON.parse(localStorage.getItem('reservationItems')) || null)
     }, [])
 
 
+    //localstoragede ilgili veri yok ise geri anasayfaya yönlendirilir
+    useEffect(() => {
+        if (!localStorage.getItem('reservationItems')) {
+            router.push("/")
+        }
+        else {
+            setLoading(false)
+        }
+    })
 
+    useEffect(() => {
+        if (reservationItems.length != 0) {
+            console.log(reservationItems)
+            console.log(`Veriler local storageye eklendikten sonra geçen süre : ${Math.floor(new Date().getTime() / 1000) - reservationItems[0].expiryDate} saniye`)
+
+            //1 saat sonra local storagedeki veriler otomatik olarak silinir ve anasayfaya yönlendirilir
+            if ((Math.floor(new Date().getTime() / 1000) - reservationItems[0].expiryDate) > 3600) {
+                localStorage.removeItem("reservationItems")
+                router.push("/")
+            }
+
+            const query = qs.stringify(
+                {
+                    //populate: ["gallery.image", "categories", "distance_rulers", "price_tables.price_type", "regions", "localizations"]
+                    populate: {
+                        locationImage: {
+                            fields: ['formats']
+                        },
+                        distance_rulers: {
+                            fields: ['name', 'value', 'icon'],
+                        },
+                        gallery: {
+                            populate: {
+                                image: {
+                                    //populate: "*"
+                                    //fields: ["url"],
+                                    populate: {
+                                        formats: {
+                                            populate: ["small", "thumbnail", "medium"]
+                                        }
+                                    },
+                                    sort: ["name:asc"]
+                                }
+                            }
+                        },
+                        regions: {
+                            fields: ["name"]
+                        }
+                    },
+                },
+                {
+                    encodeValuesOnly: true, // prettify URL
+                }
+            );
+
+            fetch(`http://3.127.136.179:1337/api/villas/${reservationItems[0].villaId}?${query}`)
+                .then(res => res.json())
+                .then(
+                    (result) => {
+                        setVilla(result.data)
+                        //console.log(result.data.attributes.distance_rulers.data)                            
+                        //console.log(result.data[0].attributes.gallery.data.attributes.image.data);
+                        //console.log(result.data.attributes.gallery.data.attributes.video);
+                    },
+                    (error) => {
+
+                    }
+                )
+        }
+    }, [reservationItems])
 
 
 
     const [activeStep, setActiveStep] = useState(0)
+    useEffect(() => {
+        if (activeStep == 2) {
+            setTimeout(() => {
+                localStorage.removeItem("reservationItems")
+                router.push("/")
+            }, 3000)
+        }
+    }, [activeStep])
     const [transferType, settransferType] = useState(0) // 0 = creditCard, 1= transfer
 
     const [isCitySelectionOpened, setisCitySelectionOpened] = useState(false)
@@ -49,10 +129,36 @@ export default function Reservation() {
         return phoneString
     }
 
+    //20 Kasım 2021 Salı formatında metin döndürür
+    const getDateString = (girismiCikismi = 'g') => {
+
+        if (reservationItems.length != 0) {
+            let dateArray = girismiCikismi == 'g' ? reservationItems[0].startDate.split('-') : reservationItems[0].endDate.split('-')
+            let year = dateArray[0]
+            let month = dateArray[1][0] == '0' ? dateArray[1][1] : dateArray[1]
+            let day = dateArray[dateArray.length - 1][0] == '0' ? dateArray[dateArray.length - 1][1] : dateArray[dateArray.length - 1]
+
+            let date = new Date(year, month - 1, day)
+            let dayName = turkishDays[date.getDay()]
+            let monthName = turkishMonths[date.getMonth()]
+
+            return `${day} ${monthName} ${year} ${dayName}`
+        }
+
+        return girismiCikismi == 'g' ? 'Giriş' : 'Çıkış'
+    }
+
     return (
         <section className={`${styles['contentDetail']}`}>
 
 
+            {isPageLoading && (<div className={"loadingBox"}>
+                <div className="loadingEffect">
+                    <div className="loadingLogo">
+                        <div className="loadingLogo" style={{ backgroundImage: "url(/images/labirent.png)" }}></div>
+                    </div>
+                </div>
+            </div>)}
 
             <div className={styles.stepMenuBox}>
                 <div className={styles.container}>
@@ -431,11 +537,11 @@ export default function Reservation() {
                         <div className={styles.right}>
                             <div className={styles.top}>
                                 <div className={styles.imageBox}>
-                                    <div className={styles.img} style={{ backgroundImage: "url(/images/villas-img-1.png)" }}></div>
+                                    <div className={styles.img} style={{ backgroundImage: villa.attributes && `url(http://3.127.136.179:1337${villa?.attributes?.gallery?.data?.attributes?.image?.data[0]?.attributes?.url})` }}></div>
                                 </div>
                                 <div className={styles.textBox}>
-                                    <div className={styles.title}>Villa Paris</div>
-                                    <div className={styles.desc}>Kalkan / Üzümlü</div>
+                                    <div className={styles.title}>{villa?.attributes?.name}</div>
+                                    <div className={styles.desc}>{`Fethiye / ${villa?.attributes?.regions?.data[0]?.attributes?.name}`}</div>
                                 </div>
                             </div>
                             <div className={styles.bottom}>
@@ -443,7 +549,7 @@ export default function Reservation() {
                                     <li>
                                         <div className={styles.visitorNumberBox}>
                                             <div className={styles.visitorBox}>
-                                                <span> 2 Yetişkin, 0 Çocuk, 0 Bebek</span>
+                                                <span>{reservationItems.length != 0 && `${reservationItems[0].numberOfAdults} Yetişkin, ${reservationItems[0].numberOfChild} Çocuk, ${reservationItems[0].numberOfBabies} Bebek`}</span>
                                             </div>
                                             <div className={styles.changeButton}>
                                                 <Link onClick={(e) => e.preventDefault()} href="#">Değiştir</Link>
@@ -455,13 +561,13 @@ export default function Reservation() {
                                             <div className={styles.date}>
                                                 <div className={styles.title}>Giriş</div>
                                                 <div className={styles.textBox}>
-                                                    <span>{reservationStartDate}</span>
+                                                    <span>{reservationItems && getDateString('g')}</span>
                                                 </div>
                                             </div>
                                             <div className={styles.date}>
                                                 <div className={styles.title}>Çıkış</div>
                                                 <div className={styles.textBox}>
-                                                    <span>20 Kasım 2021 Salı</span>
+                                                    <span>{reservationItems && getDateString('c')}</span>
                                                 </div>
                                             </div>
                                         </div>

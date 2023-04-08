@@ -20,12 +20,32 @@ export default function Reservation({ villaId }) {
     const [dateClickCount, setDateClickCount] = useState(0)
     const [datePlaceHolder, setdatePlaceHolder] = useState("Tarih Seçin")
 
+    const dispatch = useDispatch()
+    const { numberOfAdults, numberOfChild, numberOfBabies, reservationStartDate, reservationEndDate } = useSelector(state => state.globalState)
+
+    //Villa müsaitliği sorgula butonuna tıklayınca rezervasyon giriş ve çıkış tarihleri değişiyor ve bir sonraki sayfaya gönderilecek veriler localstorageye kaydediliyor
+    useEffect(() => {
+        if (reservationStartDate != "" && reservationEndDate != "") {
+            let date = new Date()
+            //let utcTimestamp = Math.floor((Math.abs(date.getTimezoneOffset() * 60) + (date.getTime())) / 1000)
+
+            const items = [{
+                villaId,
+                startDate: reservationStartDate,
+                endDate: reservationEndDate,
+                numberOfAdults,
+                numberOfChild,
+                numberOfBabies,
+                expiryDate: Math.floor(date.getTime() / 1000)
+            }]
+
+            localStorage.setItem('reservationItems', JSON.stringify(items));
+        }
+    }, [reservationStartDate, reservationEndDate])
+
     useEffect(() => {
         if (numberOfAdults != 0 || numberOfChild != 0 || numberOfBabies != 0) { inputRefNumberOfPeople.current.value = `${numberOfAdults + numberOfChild} Misafir, ${numberOfBabies} Bebek` } else { inputRefNumberOfPeople.current.value = "2 Misafir, 1 Bebek" }
     })
-
-    const dispatch = useDispatch()
-    const { numberOfAdults, numberOfChild, numberOfBabies } = useSelector(state => state.globalState)
 
     //Change People Number
     const changeNumber = (operation, type) => {
@@ -94,121 +114,124 @@ export default function Reservation({ villaId }) {
 
     function handleClick() {
 
-        // yıl : reservationDate.startDate.getFullYear()
-        //  ay : (reservationDate.startDate.getMonth() + 1)
-        // gün : reservationDate.startDate.getDate()
-        //console.log('Giriş Tarihi : ' + reservationDate.startDate.getFullYear() + '-' + (reservationDate.startDate.getMonth() + 1) + '-' + reservationDate.startDate.getDate());
-        //console.log('Çıkış Tarihi : ' + reservationDate.endDate.getFullYear() + '-' + (reservationDate.endDate.getMonth() + 1) + '-' + reservationDate.endDate.getDate());
+        if (datePlaceHolder != "Tarih Seçin") {
+            // yıl : reservationDate.startDate.getFullYear()
+            //  ay : (reservationDate.startDate.getMonth() + 1)
+            // gün : reservationDate.startDate.getDate()
+            //console.log('Giriş Tarihi : ' + reservationDate.startDate.getFullYear() + '-' + (reservationDate.startDate.getMonth() + 1) + '-' + reservationDate.startDate.getDate());
+            //console.log('Çıkış Tarihi : ' + reservationDate.endDate.getFullYear() + '-' + (reservationDate.endDate.getMonth() + 1) + '-' + reservationDate.endDate.getDate());
 
-        const startYear = reservationDate.startDate.getFullYear()
-        const startMonth = (reservationDate.startDate.getMonth() + 1).toString().length == 1 ? '0' + (reservationDate.startDate.getMonth() + 1).toString() : (reservationDate.startDate.getMonth() + 1)
-        const startday = (reservationDate.startDate.getDate()).toString().length == 1 ? '0' + (reservationDate.startDate.getDate()).toString() : (reservationDate.startDate.getDate())
+            const startYear = reservationDate.startDate.getFullYear()
+            const startMonth = (reservationDate.startDate.getMonth() + 1).toString().length == 1 ? '0' + (reservationDate.startDate.getMonth() + 1).toString() : (reservationDate.startDate.getMonth() + 1)
+            const startday = (reservationDate.startDate.getDate()).toString().length == 1 ? '0' + (reservationDate.startDate.getDate()).toString() : (reservationDate.startDate.getDate())
 
-        const endYear = reservationDate.endDate.getFullYear()
-        const endMonth = (reservationDate.endDate.getMonth() + 1).toString().length == 1 ? '0' + (reservationDate.endDate.getMonth() + 1).toString() : (reservationDate.endDate.getMonth() + 1)
-        const endday = (reservationDate.endDate.getDate()).toString().length == 1 ? '0' + (reservationDate.endDate.getDate()).toString() : (reservationDate.endDate.getDate())
+            const endYear = reservationDate.endDate.getFullYear()
+            const endMonth = (reservationDate.endDate.getMonth() + 1).toString().length == 1 ? '0' + (reservationDate.endDate.getMonth() + 1).toString() : (reservationDate.endDate.getMonth() + 1)
+            const endday = (reservationDate.endDate.getDate()).toString().length == 1 ? '0' + (reservationDate.endDate.getDate()).toString() : (reservationDate.endDate.getDate())
 
-        const giris = startYear + '-' + startMonth + '-' + startday
-        const cikis = endYear + '-' + endMonth + '-' + endday
+            const giris = startYear + '-' + startMonth + '-' + startday
+            const cikis = endYear + '-' + endMonth + '-' + endday
 
-        //console.log(startYear + '-' + startMonth + '-' + startday);
+            //console.log(startYear + '-' + startMonth + '-' + startday);
 
-        //console.log(giris + ' / ' + cikis);
-
-
-        //const giris = (reservationDate.startDate.getFullYear() + '-' + ((reservationDate.startDate.getMonth() + 1).lenght == 1 ? '0' + (reservationDate.startDate.getMonth() + 1).toString() : (reservationDate.startDate.getMonth() + 1)) + '-' + (reservationDate.startDate.getDate().lenght == 1 ? "0" + reservationDate.startDate.getDate() : reservationDate.startDate.getDate())).toString()
-        //const cikis = (reservationDate.endDate.getFullYear() + '-' + ((reservationDate.endDate.getMonth() + 1).lenght == 1 ? "0" + (reservationDate.endDate.getMonth() + 1) : (reservationDate.endDate.getMonth() + 1)) + '-' + (reservationDate.endDate.getDate().lenght == 1 ? "0" + reservationDate.endDate.getDate() : reservationDate.endDate.getDate())).toString()
-
-        //console.log('0' + (reservationDate.startDate.getMonth() + 1).toString());
-        //console.log(giris);
-        //let giris = '2023-02-18'
-        //let cikis = '2023-02-20'
-
-        const query = qs.stringify(
-            {
-                filters: {
+            //console.log(giris + ' / ' + cikis);
 
 
-                    $or: [
+            //const giris = (reservationDate.startDate.getFullYear() + '-' + ((reservationDate.startDate.getMonth() + 1).lenght == 1 ? '0' + (reservationDate.startDate.getMonth() + 1).toString() : (reservationDate.startDate.getMonth() + 1)) + '-' + (reservationDate.startDate.getDate().lenght == 1 ? "0" + reservationDate.startDate.getDate() : reservationDate.startDate.getDate())).toString()
+            //const cikis = (reservationDate.endDate.getFullYear() + '-' + ((reservationDate.endDate.getMonth() + 1).lenght == 1 ? "0" + (reservationDate.endDate.getMonth() + 1) : (reservationDate.endDate.getMonth() + 1)) + '-' + (reservationDate.endDate.getDate().lenght == 1 ? "0" + reservationDate.endDate.getDate() : reservationDate.endDate.getDate())).toString()
 
-                        {
-                            $and: [
-                                {
-                                    checkIn: {
-                                        $lte: giris,
+            //console.log('0' + (reservationDate.startDate.getMonth() + 1).toString());
+            //console.log(giris);
+            //let giris = '2023-02-18'
+            //let cikis = '2023-02-20'
+
+            const query = qs.stringify(
+                {
+                    filters: {
+
+
+                        $or: [
+
+                            {
+                                $and: [
+                                    {
+                                        checkIn: {
+                                            $lte: giris,
+                                        },
                                     },
-                                },
-                                {
-                                    checkOut: {
-                                        $gt: giris,
+                                    {
+                                        checkOut: {
+                                            $gt: giris,
+                                        },
                                     },
-                                },
-                            ]
-                        },
-                        {
-                            $and: [
-                                {
-                                    checkIn: {
-                                        $lt: cikis,
+                                ]
+                            },
+                            {
+                                $and: [
+                                    {
+                                        checkIn: {
+                                            $lt: cikis,
+                                        },
                                     },
-                                },
-                                {
-                                    checkOut: {
-                                        $gte: cikis,
+                                    {
+                                        checkOut: {
+                                            $gte: cikis,
+                                        },
                                     },
-                                },
-                            ]
-                        },
-                        {
-                            $and: [
-                                {
-                                    checkIn: {
-                                        $gt: giris,
+                                ]
+                            },
+                            {
+                                $and: [
+                                    {
+                                        checkIn: {
+                                            $gt: giris,
+                                        },
                                     },
-                                },
-                                {
-                                    checkIn: {
-                                        $lt: cikis,
+                                    {
+                                        checkIn: {
+                                            $lt: cikis,
+                                        },
                                     },
-                                },
-                            ]
-                        }]
+                                ]
+                            }]
 
 
 
+                    },
                 },
-            },
-            {
-                encodeValuesOnly: true, // prettify URL
-            }
-        );
-
-
-        fetch(`http://3.127.136.179:1337/api/reservations?${query}`)
-            .then(res => res.json())
-            .then(
-                (result) => {
-                    console.log(result.data);
-                    if (result.data.lenght > 0) {
-                        setAvailible(false)
-                    }
-                    else {
-                        setAvailible(true)
-                    }
-                },
-                (error) => {
-
+                {
+                    encodeValuesOnly: true, // prettify URL
                 }
-            )
+            );
 
-        console.log('musaitmi : ' + availible);
+            fetch(`http://3.127.136.179:1337/api/reservations?${query}`)
+                .then(res => res.json())
+                .then(
+                    (result) => {
+                        console.log(result.data);
+                        if (result.data.lenght > 0) {
+                            setAvailible(false)
+                        }
+                        else {
+                            setAvailible(true)
+                        }
+                    },
+                    (error) => {
 
-        if (availible) {
-            //villaId, giris, cikis, person, child, bebek
-            dispatch(changeDate(giris + "*" + cikis))
-            router.push('/rezervasyon')
+                    }
+                )
+
+            console.log('musaitmi : ' + availible);
+
+            if (availible) {
+                //villaId, giris, cikis, person, child, bebek
+                dispatch(changeDate(giris + "*" + cikis))
+                router.push('/rezervasyon')
+            }
         }
-
+        else {
+            console.log("Tarih seçin")
+        }
     }
 
     return (
