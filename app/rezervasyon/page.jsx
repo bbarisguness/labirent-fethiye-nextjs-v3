@@ -35,8 +35,8 @@ export default function Reservation() {
 
     useEffect(() => {
         if (reservationItems.length != 0) {
-            console.log(reservationItems)
-            console.log(`Veriler local storageye eklendikten sonra geçen süre : ${Math.floor(new Date().getTime() / 1000) - reservationItems[0].expiryDate} saniye`)
+            //console.log(reservationItems)
+            //console.log(`Veriler local storageye eklendikten sonra geçen süre : ${Math.floor(new Date().getTime() / 1000) - reservationItems[0].expiryDate} saniye`)
 
             //1 saat sonra local storagedeki veriler otomatik olarak silinir ve anasayfaya yönlendirilir
             if ((Math.floor(new Date().getTime() / 1000) - reservationItems[0].expiryDate) > 3600) {
@@ -48,12 +48,6 @@ export default function Reservation() {
                 {
                     //populate: ["gallery.image", "categories", "distance_rulers", "price_tables.price_type", "regions", "localizations"]
                     populate: {
-                        locationImage: {
-                            fields: ['formats']
-                        },
-                        distance_rulers: {
-                            fields: ['name', 'value', 'icon'],
-                        },
                         gallery: {
                             populate: {
                                 image: {
@@ -72,6 +66,7 @@ export default function Reservation() {
                             fields: ["name"]
                         }
                     },
+                    fields:["name"]
                 },
                 {
                     encodeValuesOnly: true, // prettify URL
@@ -97,14 +92,14 @@ export default function Reservation() {
 
 
     const [activeStep, setActiveStep] = useState(0)
-    useEffect(() => {
-        if (activeStep == 2) {
-            setTimeout(() => {
-                localStorage.removeItem("reservationItems")
-                router.push("/")
-            }, 3000)
-        }
-    }, [activeStep])
+    // useEffect(() => {
+    //     if (activeStep == 2) {
+    //         setTimeout(() => {
+    //             localStorage.removeItem("reservationItems")
+    //             router.push("/")
+    //         }, 3000)
+    //     }
+    // }, [activeStep])
     const [transferType, settransferType] = useState(0) // 0 = creditCard, 1= transfer
 
     const [isCitySelectionOpened, setisCitySelectionOpened] = useState(false)

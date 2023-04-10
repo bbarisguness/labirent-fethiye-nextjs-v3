@@ -112,7 +112,7 @@ export default function Reservation({ villaId }) {
 
 
 
-    async function  handleClick() {
+    async function handleClick() {
 
         if (datePlaceHolder != "Tarih Seçin") {
             // yıl : reservationDate.startDate.getFullYear()
@@ -206,16 +206,18 @@ export default function Reservation({ villaId }) {
                 }
             );
 
-           await fetch(`http://3.127.136.179:1337/api/reservations?${query}`)
+            await fetch(`http://3.127.136.179:1337/api/reservations?${query}`)
                 .then(res => res.json())
                 .then(
                     (result) => {
-                        console.log(result.data);
-                        if (result.data.lenght > 0) {
-                            setAvailible(false)
+                        //debugger
+                        //console.log(result.data);
+                        if (result.data.length < 1 ) {
+                            dispatch(changeDate(giris + "*" + cikis))
+                            router.push('/rezervasyon')
                         }
-                        else {
-                            setAvailible(true)
+                        else{
+                            alert('Seçilen tarihler müsait değil. Lütfen Müsaitlik takvimini kontrol ediniz')
                         }
                     },
                     (error) => {
@@ -223,13 +225,13 @@ export default function Reservation({ villaId }) {
                     }
                 )
 
-            console.log('musaitmi : ' + availible);
+            //console.log('musaitmi : ' + availible);
 
-            if (availible) {
-                //villaId, giris, cikis, person, child, bebek
-                dispatch(changeDate(giris + "*" + cikis))
-                router.push('/rezervasyon')
-            }
+            // if (availible) {
+            //     //villaId, giris, cikis, person, child, bebek
+            //     dispatch(changeDate(giris + "*" + cikis))
+            //     router.push('/rezervasyon')
+            // }
         }
         else {
             console.log("Tarih seçin")
