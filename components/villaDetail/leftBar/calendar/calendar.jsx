@@ -2,7 +2,7 @@ import MyDatePicker from "./mydatepicker"
 import styles from "./calendar.module.css"
 import { useState } from "react"
 
-export default function Calendar({ ready }) {
+export default function Calendar({ ready,dates }) {
     const [yearTab, setYearTab] = useState(new Date().getFullYear())
 
     const handleYearTab = (operation) => {
@@ -61,7 +61,7 @@ export default function Calendar({ ready }) {
                 </div>
             }
             <div className={styles.datepickerBox}>
-                <MyDatePicker year={yearTab} />
+                <MyDatePicker year={yearTab} dates={dates} />
             </div>
         </div>
     )

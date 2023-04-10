@@ -72,6 +72,9 @@ export default function VillaDetail({ params }) {
                                 }
                             }
 
+                        },
+                        reservations:{
+                            sort: ["checkIn:asc"]
                         }
                     },
                 },
@@ -90,6 +93,7 @@ export default function VillaDetail({ params }) {
                         //console.log(result.data.attributes.distance_rulers.data)                            
                         //console.log(result.data[0].attributes.gallery.data.attributes.image.data);
                         //console.log(result.data.attributes.gallery.data.attributes.video);
+                        //console.log(result.data.attributes.reservations.data);
                     },
                     (error) => {
 
@@ -251,7 +255,7 @@ export default function VillaDetail({ params }) {
                                     </div>
                                     <DistanceRuler data={villa.attributes.distance_rulers} />
                                     <PriceTable data={villa.attributes.price_tables} />
-                                    <Calendar ready={ready} />
+                                    <Calendar ready={ready} dates={villa.attributes.reservations.data} />
                                 </div>
                                 <div className={styles.right}>
                                     <div className={styles.general}>

@@ -2,7 +2,18 @@ import { useEffect, useState } from "react"
 import styles from "./mydatepicker.module.css"
 
 //reservasyon tarihleri düşük aydan yükselen aya doğru gelmesi lazım
-export default function MyDatePicker({ year = 2023, reservationDates = ["2022/11/25-2023/0/3", "2023/0/29-2023/1/5", "2023/1/5-2023/1/7", "2023/1/25-2023/5/21", "2023/6/5-2023/6/10", "2023/6/10-2023/6/15", "2023/11/9-2023/11/12"] }) {
+export default function MyDatePicker({ year = 2023, dates }) {
+
+    //reservationDates = ["2022/11/25-2023/0/3", "2023/0/29-2023/1/5", "2023/1/5-2023/1/7", "2023/1/25-2023/5/21", "2023/6/5-2023/6/10", "2023/6/10-2023/6/15", "2023/11/9-2023/11/12"]
+    //let datesString = []
+
+    let reservationDates = []
+    dates.map((date) => {
+        //console.log(date.attributes.checkIn.split("-")[0] + "/" + date.attributes.checkIn.split("-")[1] + "/" + date.attributes.checkIn.split("-")[2]+"-"+date.attributes.checkOut.split("-")[0] + "/" + date.attributes.checkOut.split("-")[1] + "/" + date.attributes.checkOut.split("-")[2]);
+        reservationDates.push(date.attributes.checkIn.split("-")[0] + "/" + (date.attributes.checkIn.split("-")[1] - 1) + "/" + date.attributes.checkIn.split("-")[2] + "-" + date.attributes.checkOut.split("-")[0] + "/" + (date.attributes.checkOut.split("-")[1] - 1) + "/" + date.attributes.checkOut.split("-")[2])
+    })
+    //console.log(reservationDates);
+
     const [ready, setReady] = useState(false)
     let days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     let dayUtc = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
