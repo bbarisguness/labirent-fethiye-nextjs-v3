@@ -112,7 +112,7 @@ export default function Reservation({ villaId }) {
 
 
 
-    function handleClick() {
+    async function  handleClick() {
 
         if (datePlaceHolder != "Tarih Seçin") {
             // yıl : reservationDate.startDate.getFullYear()
@@ -131,6 +131,8 @@ export default function Reservation({ villaId }) {
 
             const giris = startYear + '-' + startMonth + '-' + startday
             const cikis = endYear + '-' + endMonth + '-' + endday
+
+            console.log(giris);
 
             //console.log(startYear + '-' + startMonth + '-' + startday);
 
@@ -204,7 +206,7 @@ export default function Reservation({ villaId }) {
                 }
             );
 
-            fetch(`http://3.127.136.179:1337/api/reservations?${query}`)
+           await fetch(`http://3.127.136.179:1337/api/reservations?${query}`)
                 .then(res => res.json())
                 .then(
                     (result) => {

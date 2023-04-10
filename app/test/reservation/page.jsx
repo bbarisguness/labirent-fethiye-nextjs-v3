@@ -7,8 +7,8 @@ export default function test() {
 
     const [availible, setAvailible] = useState(false)
     //let date = ['2023-02-20', '2023-02-21', '2023-02-23', '2023-02-24', '2023-02-25']
-    let giris = '2023-02-18'
-    let cikis = '2023-02-20'
+    let giris = '2023-04-11'
+    let cikis = '2023-04-14'
 
     const query = qs.stringify(
         {
