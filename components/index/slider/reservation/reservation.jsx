@@ -17,6 +17,10 @@ export default function ReservationBox() {
     const [isNumberPeopleMenuOpen, setNumberPeople] = useState(false)
     const [openDate, setOpenDate] = useState(false)
 
+    const [numberOfAdults1, setNumberOfAdults1] = useState(0)
+    const [numberOfChild1, setNumberOfChild1] = useState(0)
+    const [numberOfBabies1, setNumberOfBabies1] = useState(0)
+
     const [reservationDate, setReservationDate] = useState(
         {
             startDate: new Date(),
@@ -43,8 +47,15 @@ export default function ReservationBox() {
         }
     }, [dateClickCount])
 
-    const changeNumber = (operation, type) => {
-        dispatch(changeNumberOfPeople([type, operation]))
+    
+    const changeNumber = (operation, type) => {       
+        if (type == "adult") {
+            operation == "+" ? setNumberOfAdults1(numberOfAdults1 + 1) : numberOfAdults1 > 0 && setNumberOfAdults1(numberOfAdults1 - 1);
+        } else if (type == "child") {
+            operation == "+" ? setNumberOfChild1(numberOfChild1 + 1) : numberOfChild1 > 0 && setNumberOfChild1(numberOfChild1 - 1);
+        } else {
+            operation == "+" ? setNumberOfBabies1(numberOfBabies1 + 1) : numberOfBabies1 > 0 && setNumberOfBabies1(numberOfBabies1 - 1);
+        }
     }
 
     const getDate = () => {
@@ -141,8 +152,8 @@ export default function ReservationBox() {
                                 <div className={styles.desc}>13 ve üzeri yaştakiler</div>
                             </div>
                             <div className={styles.right}>
-                                <div onClick={() => numberOfAdults != 0 && changeNumber("-", "adult")} className={styles.minus}></div>
-                                <input id="Adults" type="text" className={`${styles["input_amount"]} ${styles["input_adults"]}`} value={numberOfAdults} max="99" disabled />
+                                <div onClick={() => changeNumber("-", "adult")} className={styles.minus}></div>
+                                <input id="Adults" type="text" className={`${styles["input_amount"]} ${styles["input_adults"]}`} value={numberOfAdults1} max="99" disabled />
                                 <div onClick={() => changeNumber("+", "adult")} className={styles.plus}></div>
                             </div>
                         </li>
@@ -152,8 +163,8 @@ export default function ReservationBox() {
                                 <div className={styles.desc}>13 ve üzeri yaştakiler</div>
                             </div>
                             <div className={styles.right}>
-                                <div onClick={() => numberOfChild != 0 && changeNumber("-", "child")} className={styles.minus}></div>
-                                <input id="Childs" type="text" className={`${styles["input_amount"]} ${styles["input_children"]}`} value={numberOfChild} max="99" disabled />
+                                <div onClick={() => changeNumber("-", "child")} className={styles.minus}></div>
+                                <input id="Childs" type="text" className={`${styles["input_amount"]} ${styles["input_children"]}`} value={numberOfChild1} max="99" disabled />
                                 <div onClick={() => changeNumber("+", "child")} className={styles.plus}></div>
                             </div>
                         </li>
@@ -163,8 +174,8 @@ export default function ReservationBox() {
                                 <div className={styles.desc}>13 ve üzeri yaştakiler</div>
                             </div>
                             <div className={styles.right}>
-                                <div onClick={() => numberOfBabies != 0 && changeNumber("-", "babies")} className={styles.minus}></div>
-                                <input id="Babies" type="text" className={`${styles["input_amount"]} ${styles["input_babies"]}`} value={numberOfBabies} max="99" disabled />
+                                <div onClick={() => changeNumber("-", "babies")} className={styles.minus}></div>
+                                <input id="Babies" type="text" className={`${styles["input_amount"]} ${styles["input_babies"]}`} value={numberOfBabies1} max="99" disabled />
                                 <div onClick={() => changeNumber("+", "babies")} className={styles.plus}></div>
                             </div>
                         </li>
