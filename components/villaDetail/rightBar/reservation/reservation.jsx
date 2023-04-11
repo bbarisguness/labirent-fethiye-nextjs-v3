@@ -6,6 +6,7 @@ import { DateRange } from "react-date-range"
 import { useRef, useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux";
 import { changeDate, changeNumberOfPeople } from "@/store/globalState";
+import Image from "next/image";
 const qs = require('qs');
 
 
@@ -212,12 +213,13 @@ export default function Reservation({ villaId }) {
                     (result) => {
                         //debugger
                         //console.log(result.data);
-                        if (result.data.length < 1 ) {
+                        if (result.data.length < 1) {
                             dispatch(changeDate(giris + "*" + cikis))
                             router.push('/rezervasyon')
                         }
-                        else{
-                            alert('Seçilen tarihler müsait değil. Lütfen Müsaitlik takvimini kontrol ediniz')
+                        else {
+                            //Seçilen tarihlerde rezervasyon var ise uyarı modalın açılması için
+                            setAvailible(true)
                         }
                     },
                     (error) => {
@@ -240,6 +242,16 @@ export default function Reservation({ villaId }) {
 
     return (
         <div className={styles.top}>
+
+            {availible && (<div className={styles.modalWrapper}>
+                <div className={`${styles['modal']}`}>
+                    <Image alt="" src="/images/alert.png" width={44} height={38} />
+                    <span className={styles.modalTitle}>Uyarı!</span>
+                    <p>Seçtiğiniz tarihler arasında villa müsait değildir. Lütfen villanın müsaitlik takvimini kontrol ediniz.</p>
+                    <div onClick={() => setAvailible(false)} className={styles.modalButton}>Anladım</div>
+                </div>
+            </div>)}
+
             <div className={styles.reservationBox}>
                 <div className={styles.reservationTitleText}>
                     <div className={styles.textTop}>
