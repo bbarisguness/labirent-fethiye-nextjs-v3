@@ -21,6 +21,10 @@ export default function Reservation({ villaId }) {
     const [dateClickCount, setDateClickCount] = useState(0)
     const [datePlaceHolder, setdatePlaceHolder] = useState("Tarih Seçin")
 
+    const [numberOfAdults1, setNumberOfAdults1] = useState(0)
+    const [numberOfChild1, setNumberOfChild1] = useState(0)
+    const [numberOfBabies1, setNumberOfBabies1] = useState(0)
+
     const dispatch = useDispatch()
     const { numberOfAdults, numberOfChild, numberOfBabies, reservationStartDate, reservationEndDate } = useSelector(state => state.globalState)
 
@@ -45,12 +49,20 @@ export default function Reservation({ villaId }) {
     }, [reservationStartDate, reservationEndDate])
 
     useEffect(() => {
-        if (numberOfAdults != 0 || numberOfChild != 0 || numberOfBabies != 0) { inputRefNumberOfPeople.current.value = `${numberOfAdults + numberOfChild} Misafir, ${numberOfBabies} Bebek` } else { inputRefNumberOfPeople.current.value = "2 Misafir, 1 Bebek" }
+        if (numberOfAdults1 != 0 || numberOfChild1 != 0 || numberOfBabies1 != 0) { inputRefNumberOfPeople.current.value = `${numberOfAdults1 + numberOfChild1} Misafir, ${numberOfBabies1} Bebek` } else { inputRefNumberOfPeople.current.value = "2 Misafir, 1 Bebek" }
     })
 
     //Change People Number
     const changeNumber = (operation, type) => {
-        dispatch(changeNumberOfPeople([type, operation]))
+        //dispatch(changeNumberOfPeople([type, operation]))
+
+        if (type == "adult") {
+            operation == "+" ? setNumberOfAdults1(numberOfAdults1 + 1) : numberOfAdults1 > 0 && setNumberOfAdults1(numberOfAdults1 - 1);
+        } else if (type == "child") {
+            operation == "+" ? setNumberOfChild1(numberOfChild1 + 1) : numberOfChild1 > 0 && setNumberOfChild1(numberOfChild1 - 1);
+        } else {
+            operation == "+" ? setNumberOfBabies1(numberOfBabies1 + 1) : numberOfBabies1 > 0 && setNumberOfBabies1(numberOfBabies1 - 1);
+        }
     }
 
     const girisveCikisTarihiniAl = () => {
@@ -133,7 +145,7 @@ export default function Reservation({ villaId }) {
             const giris = startYear + '-' + startMonth + '-' + startday
             const cikis = endYear + '-' + endMonth + '-' + endday
 
-            console.log(giris);
+            //console.log(giris);
 
             //console.log(startYear + '-' + startMonth + '-' + startday);
 
@@ -214,7 +226,8 @@ export default function Reservation({ villaId }) {
                         //debugger
                         //console.log(result.data);
                         if (result.data.length < 1) {
-                            dispatch(changeDate(giris + "*" + cikis))
+                            dispatch(changeDate({ start: giris, end: cikis }))
+                            dispatch(changeNumberOfPeople({ adult: numberOfAdults1, child: numberOfChild1, baby: numberOfBabies1 }))
                             router.push('/rezervasyon')
                         }
                         else {
@@ -231,7 +244,7 @@ export default function Reservation({ villaId }) {
 
             // if (availible) {
             //     //villaId, giris, cikis, person, child, bebek
-            //     dispatch(changeDate(giris + "*" + cikis))
+            //     dispatch(changeDate({ start: giris, end: cikis }))
             //     router.push('/rezervasyon')
             // }
         }
@@ -293,8 +306,8 @@ export default function Reservation({ villaId }) {
                                     <div className={styles.desc}>13 ve üzeri yaştakiler</div>
                                 </div>
                                 <div className={styles.rightPeople}>
-                                    <div onClick={() => numberOfAdults != 0 && changeNumber("-", "adult")} className={styles.minus}></div>
-                                    <input type={styles.text} disabled value={numberOfAdults} max={99} />
+                                    <div onClick={() => numberOfAdults1 != 0 && changeNumber("-", "adult")} className={styles.minus}></div>
+                                    <input type={styles.text} disabled value={numberOfAdults1} max={99} />
                                     <div onClick={() => changeNumber("+", "adult")} className={styles.plus}></div>
                                 </div>
                             </li>
@@ -304,8 +317,8 @@ export default function Reservation({ villaId }) {
                                     <div className={styles.desc}>13 ve üzeri yaştakiler</div>
                                 </div>
                                 <div className={styles.rightPeople}>
-                                    <div onClick={() => numberOfChild != 0 && changeNumber("-", "child")} className={styles.minus}></div>
-                                    <input type={styles.text} disabled value={numberOfChild} max={99} />
+                                    <div onClick={() => numberOfChild1 != 0 && changeNumber("-", "child")} className={styles.minus}></div>
+                                    <input type={styles.text} disabled value={numberOfChild1} max={99} />
                                     <div onClick={() => changeNumber("+", "child")} className={styles.plus}></div>
                                 </div>
                             </li>
@@ -315,8 +328,8 @@ export default function Reservation({ villaId }) {
                                     <div className={styles.desc}>13 ve üzeri yaştakiler</div>
                                 </div>
                                 <div className={styles.rightPeople}>
-                                    <div onClick={() => numberOfBabies != 0 && changeNumber("-", "babies")} className={styles.minus}></div>
-                                    <input type={styles.text} disabled value={numberOfBabies} max={99} />
+                                    <div onClick={() => numberOfBabies1 != 0 && changeNumber("-", "babies")} className={styles.minus}></div>
+                                    <input type={styles.text} disabled value={numberOfBabies1} max={99} />
                                     <div onClick={() => changeNumber("+", "babies")} className={styles.plus}></div>
                                 </div>
                             </li>

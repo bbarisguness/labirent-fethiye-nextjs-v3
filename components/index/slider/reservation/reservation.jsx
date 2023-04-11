@@ -20,6 +20,7 @@ export default function ReservationBox() {
     const [numberOfAdults1, setNumberOfAdults1] = useState(0)
     const [numberOfChild1, setNumberOfChild1] = useState(0)
     const [numberOfBabies1, setNumberOfBabies1] = useState(0)
+    const [filterText, setFilterText] = useState('')
 
     const [reservationDate, setReservationDate] = useState(
         {
@@ -47,8 +48,8 @@ export default function ReservationBox() {
         }
     }, [dateClickCount])
 
-    
-    const changeNumber = (operation, type) => {       
+
+    const changeNumber = (operation, type) => {
         if (type == "adult") {
             operation == "+" ? setNumberOfAdults1(numberOfAdults1 + 1) : numberOfAdults1 > 0 && setNumberOfAdults1(numberOfAdults1 - 1);
         } else if (type == "child") {
@@ -58,18 +59,12 @@ export default function ReservationBox() {
         }
     }
 
-    const getDate = () => {
-        let date = new Date(1995, 11, 17)
-        let day = date.getUTCDate().toString()
-        let month = (parseInt(date.getUTCMonth()) + 1).toString()
-        let year = date.getUTCFullYear().toString()
-        return (day + "-" + month + "-" + year)
-    }
-
     const handleSearch = () => {
         let startDate = reservationDate.startDate.toString()
         let endDate = reservationDate.endDate.toString()
-        dispatch(changeDate(startDate + "*" + endDate))
+        dispatch(changeDate({ start: startDate, end: endDate }))
+        dispatch(changeNumberOfPeople({ adult: numberOfAdults1, child: numberOfChild1, baby: numberOfBabies1 }))
+        dispatch(changeReservationFilter(filterText))
     }
 
     const girisveCikisTarihiniAl = () => {
@@ -81,7 +76,7 @@ export default function ReservationBox() {
 
     //Herhangi bir state güncellendiğinde çalışan kod bloğu
     useEffect(() => {
-        if (numberOfAdults != 0 || numberOfChild != 0 || numberOfBabies != 0) { inputRefNumberOfPeople.current.value = `${numberOfAdults + numberOfChild} Misafir, ${numberOfBabies} Bebek` } else { inputRefNumberOfPeople.current.value = "2 Misafir, 1 Bebek" }
+        if (numberOfAdults1 != 0 || numberOfChild1 != 0 || numberOfBabies1 != 0) { inputRefNumberOfPeople.current.value = `${numberOfAdults1 + numberOfChild1} Misafir, ${numberOfBabies1} Bebek` } else { inputRefNumberOfPeople.current.value = "2 Misafir, 1 Bebek" }
     })
 
     useEffect(() => {
@@ -107,7 +102,7 @@ export default function ReservationBox() {
 
     //Global rezervasyon tarihleri değiştiğinde çalışan kod bloğu(search Butonuna basınca)
     useEffect(() => {
-        //console.log(reservationStartDate + " " + reservationEndDate)
+        console.log(reservationStartDate + " " + reservationEndDate)
     }, [reservationStartDate, reservationEndDate])
 
     return (
@@ -116,7 +111,7 @@ export default function ReservationBox() {
                 <div className={styles.colonTitle}>Konum</div>
                 <div className={styles.colonInput}>
                     <i className={styles.searchIcon} />
-                    <input onChange={(e) => dispatch(changeReservationFilter(e.target.value))} type="text" placeholder="Villa Adı" />
+                    <input onChange={e => setFilterText(e.target.value)} type="text" placeholder="Villa Adı" />
                 </div>
             </div>
             <div ref={menuRefCalendar} className={`${styles["colon"]} ${styles["date"]}`}>

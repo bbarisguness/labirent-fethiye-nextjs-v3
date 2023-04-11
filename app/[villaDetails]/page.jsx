@@ -73,7 +73,7 @@ export default function VillaDetail({ params }) {
                             }
 
                         },
-                        reservations:{
+                        reservations: {
                             sort: ["checkIn:asc"]
                         }
                     },
@@ -232,7 +232,7 @@ export default function VillaDetail({ params }) {
                         <div className={styles.container}>
                             <div className={styles.productImages}>
                                 <div className={styles.row}>
-                                    <Gallery data={villa.attributes.gallery.data.attributes.image} />
+                                    <Gallery data={villa?.attributes?.gallery?.data?.attributes?.image} />
                                 </div>
                             </div>
                         </div>
@@ -287,10 +287,10 @@ export default function VillaDetail({ params }) {
 
                                             <LightGallery plugins={[lgZoom, lgVideo]} elementClassNames={styles.videoContainer}>
                                                 <a
-                                                    data-src={villa.attributes.gallery.data.attributes.video}
+                                                    data-src={villa?.attributes?.gallery?.data?.attributes?.video}
                                                 >
                                                     <div className={styles.imageBox}>
-                                                        <div className={styles.img} style={{ backgroundImage: `url(http://3.127.136.179:1337${villa.attributes.gallery.data.attributes.image.data[0].attributes.formats.medium.url})` }}></div>
+                                                        <div className={styles.img} style={{ backgroundImage: `url(http://3.127.136.179:1337${villa?.attributes?.gallery?.data?.attributes?.image?.data[0]?.attributes?.formats?.medium?.url})` }}></div>
                                                     </div>
                                                 </a>
                                             </LightGallery>
