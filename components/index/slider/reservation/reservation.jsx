@@ -31,7 +31,7 @@ export default function ReservationBox() {
 
     useEffect(() => {
         setDateClickCount(dateClickCount + 1)
-        console.log(reservationDate);
+        //console.log(reservationDate);
         if (!(reservationDate.startDate.getTime() == reservationDate.endDate.getTime())) {
             girisveCikisTarihiniAl()
         }

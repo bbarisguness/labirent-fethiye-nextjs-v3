@@ -1,7 +1,7 @@
 import styles from "./testimonialcard.module.css"
 
 export default function TestimonialCard({ data }) {
-    console.log(data);
+    //console.log(data);
     return (
         <div className={styles.cardContainer}>
             <div className={styles.ulTop}>
