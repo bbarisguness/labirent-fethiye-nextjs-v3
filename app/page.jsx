@@ -1,4 +1,3 @@
-'use client';
 import Slider from "@/components/index/slider/slider"
 import TreeStep from "@/components/index/treestep/treestep"
 import Villa from "@/components/index/villa/villa"

@@ -66,7 +66,7 @@ export default function Reservation() {
                             fields: ["name"]
                         }
                     },
-                    fields:["name"]
+                    fields: ["name"]
                 },
                 {
                     encodeValuesOnly: true, // prettify URL
@@ -141,6 +141,59 @@ export default function Reservation() {
         }
 
         return girismiCikismi == 'g' ? 'Giriş' : 'Çıkış'
+    }
+
+    function submitFormPerson(values) {
+
+        const person = {
+            name: values.name,
+            surname: values.surname,
+            email: values.email,
+            phone: values.phone,
+            city: values.city,
+            ilce: values.ilce,
+            tcNo: values.tcNo,
+            address: values.address,
+            note: values.note
+        }
+
+        //alert("burda")
+
+        //dispatch(changePersonInfo(person))
+
+        //localStorage.setItem('reservationItems', JSON.stringify(items));
+
+        localStorage.setItem('personInfo', JSON.stringify(person))
+
+        //console.log(localStorage.getItem('personInfo'));
+
+        //console.log(values)
+        setActiveStep(1)
+        window.scrollTo(0, 0)
+    }
+
+    function submitFormPay(values) {
+
+        console.log("transferType = " + transferType);
+
+        if (transferType == 1) {
+            // rezervasyonu oluştur
+            
+        }
+        else {
+            // kredi kartı ile ödeme doğrula ve ardından rezervasyonu oluştur
+            // if(!paymetStatus)
+            // {
+            //     // kredi kartı ödeme hatası hiç bir yere gitme
+            // }
+            console.log(values)
+
+        }
+
+
+
+        //setActiveStep(2)
+        //window.scrollTo(0, 0)
     }
 
     return (
@@ -240,9 +293,8 @@ export default function Reservation() {
                                         })
                                     }
                                     onSubmit={(values) => {
-                                        console.log(values)
-                                        setActiveStep(1)
-                                        window.scrollTo(0, 0)
+                                        submitFormPerson(values)
+
                                     }}
                                 >
                                     {
@@ -340,12 +392,12 @@ export default function Reservation() {
                                                             </span>
                                                         </div>
                                                     </li>
-                                                    <li>
+                                                    {/* <li>
                                                         <div className={styles.inputBox}>
                                                             <div className={styles.inputName}>Posta Kodu</div>
                                                             <input name="zipCode" value={values.zipCode} onChange={handleChange} type="text" placeholder="•••••" minLength="5" maxLength="5" />
                                                         </div>
-                                                    </li>
+                                                    </li> */}
                                                     <li>
                                                         <div className={styles.inputBox}>
                                                             <div className={styles.inputName}>Tc No *</div>
@@ -434,9 +486,13 @@ export default function Reservation() {
                                                         })
                                                     }
                                                     onSubmit={(values) => {
-                                                        console.log(values)
-                                                        setActiveStep(2)
-                                                        window.scrollTo(0, 0)
+
+                                                        submitFormPay(values)
+
+                                                        //console.log(values)
+                                                        //console.log(transferType);
+                                                        // setActiveStep(2)
+                                                        // window.scrollTo(0, 0)
                                                     }}
                                                 >
                                                     {
@@ -495,7 +551,7 @@ export default function Reservation() {
                                                     </li>
                                                 </ul>
                                                 <div className={styles.linkBox}>
-                                                    <Link onClick={(e) => { e.preventDefault(); setActiveStep(2); window.scrollTo(0, 0) }} href="#" className={styles.blueButtonArrow}>
+                                                    <Link onClick={(e) => { e.preventDefault(); submitFormPay(null)  /*setActiveStep(2); window.scrollTo(0, 0) */ }} href="#" className={styles.blueButtonArrow}>
                                                         <span>Onayla ve Öde</span>
                                                     </Link>
                                                 </div>

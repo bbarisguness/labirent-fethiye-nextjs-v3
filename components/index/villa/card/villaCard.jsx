@@ -161,7 +161,7 @@ export default function VillaCard({ data, type, from }) {
             )
         }
         else {
-            return (<div>loading</div>)
+            return (<div>loading...</div>)
         }
     }
 }
