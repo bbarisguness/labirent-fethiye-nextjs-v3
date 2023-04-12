@@ -7,6 +7,7 @@ import * as Yup from "yup"
 import citiess from "../../data/tr.json"
 var qs = require('qs');
 import { useRouter } from "next/navigation"
+import { format } from 'date-fns'
 
 export default function Reservation() {
     const router = useRouter()
@@ -85,6 +86,15 @@ export default function Reservation() {
                         },
                         regions: {
                             fields: ["name"]
+                        },
+                        price_tables: {
+                            fields: ["price", "firstTime", "lastTime"],
+                            populate: {
+                                price_type: {
+                                    fields: ["slug"]
+                                }
+                            }
+
                         }
                     },
                     fields: ["name"]
@@ -111,6 +121,9 @@ export default function Reservation() {
     }, [reservationItems])
 
 
+
+
+    //days(getDateString('g'),getDateString('c'))
 
     const [activeStep, setActiveStep] = useState(0)
     // useEffect(() => {
@@ -163,6 +176,35 @@ export default function Reservation() {
 
         return girismiCikismi == 'g' ? 'Giriş' : 'Çıkış'
     }
+
+
+    //#region Rezervasyon Günleri
+    const [isDayReady, setIsDayReady] = useState(false)
+    async function days(firstDay, lastDay) {
+        //debugger
+        //var day = new Date(firstDay)
+
+        var day = new Date(firstDay);
+
+        while (day <= new Date(lastDay)) {
+            await console.log("Day : " + format(day, 'MM/dd/yyyy'));
+            day.setDate(day.getDate() + 1)
+
+            // burada oluşturulan günlerin price bilgileri apiden çekilecek
+        }
+        setIsDayReady(true)
+
+    }
+
+    if (reservationItems.length > 0) {
+        if (reservationItems[0].startDate) {
+            if (!isDayReady) {
+                days(reservationItems[0].startDate.toString(), reservationItems[0].endDate.toString())
+            }
+        }
+    }
+    //#endregion
+
 
     function submitFormPerson(values) {
 
@@ -218,6 +260,7 @@ export default function Reservation() {
     }
 
     return (
+
         <section className={`${styles['contentDetail']}`}>
 
 

@@ -22,6 +22,9 @@ var qs = require('qs');
 
 export default function VillaDetail({ params }) {
 
+
+    // 301 middleware
+
     let villaId = params.villaDetails.split('-')[0]
 
     const [villa, setVilla] = useState(false)
@@ -173,7 +176,7 @@ export default function VillaDetail({ params }) {
 
     }, [villaId])
 
-
+    
 
     const [isDescOpen, setisDescOpen] = useState(false)
     if (villa) {
