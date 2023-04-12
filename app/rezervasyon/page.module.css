@@ -242,6 +242,10 @@
     position: relative;
 }
 
+.contentDetail .rezervationBox .reservation .left .personInfoBox ul li .inputBox .form_city.requareClick {
+    border: 1px solid red;
+}
+
 .contentDetail .rezervationBox .reservation .left .personInfoBox ul li .inputBox .form_city.opened {
     border-radius: 8px 8px 0 0;
 }
@@ -413,9 +417,13 @@
     transition: border 0.2s ease-in-out;
 }
 
-.contentDetail .rezervationBox .reservation .left .paymentBox .payment .paymentType ul li:hover {
-    border: 2px solid #3E2093;
+.contentDetail .rezervationBox .reservation .left .paymentBox .payment .paymentType ul li.creditCard a {
+    cursor: not-allowed;
 }
+
+/* .contentDetail .rezervationBox .reservation .left .paymentBox .payment .paymentType ul li:hover {
+    border: 2px solid #3E2093;
+} */
 
 .contentDetail .rezervationBox .reservation .left .paymentBox .payment .paymentType ul li:hover a .imageBox i.creditCardIcon {
     background-image: url(/images/payment-icon-1-hover.png);

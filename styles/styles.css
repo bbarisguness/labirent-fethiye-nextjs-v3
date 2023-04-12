@@ -337,19 +337,11 @@ img {
   justify-content: center;
 }
 
-.loadingNone {
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.4s ease-in-out;
-}
-
 .loadingEffect {
   width: 300px;
   height: 300px;
   border-radius: 50%;
   position: relative;
-  -webkit-animation: loadingAnimation 1s linear;
-  animation: loadingAnimation 1s linear;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -374,18 +366,6 @@ img {
   top: calc(50% - 28px);
   width: 142px;
   height: 56px;
-}
-
-@keyframes loadingAnimation {
-  0% {
-    transform: scale(0) rotate(90deg);
-    opacity: 0;
-  }
-
-  100% {
-    transform: scale(1) rotate(0);
-    opacity: 1;
-  }
 }
 
 @keyframes loadingRotate {

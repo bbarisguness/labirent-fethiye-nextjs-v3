@@ -1,7 +1,7 @@
 'use client'
 import styles from "./page.module.css"
 import Link from "next/link"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { Formik } from "formik"
 import * as Yup from "yup"
 import citiess from "../../data/tr.json"
@@ -10,6 +10,8 @@ import { useRouter } from "next/navigation"
 
 export default function Reservation() {
     const router = useRouter()
+    const refOfCityMenu = useRef()
+    const refOfStateMenu = useRef()
     const [isPageLoading, setLoading] = useState(true)
     const [reservationItems, setreservationItems] = useState([])
     const [citys, setCitys] = useState(null)
@@ -30,6 +32,25 @@ export default function Reservation() {
         }
         else {
             setLoading(false)
+        }
+
+        //Menülerin dışında bir yere tıklandığı zaman menülerin kapanması için
+        let handler = (e) => {
+            if (activeStep == 0) {
+                //İl memüsü için
+                if (!refOfCityMenu.current.contains(e.target)) {
+                    setisCitySelectionOpened(false)
+                }
+
+                //İlçe menüsü için
+                if (!refOfStateMenu.current.contains(e.target)) {
+                    setisDistrictSelectionOpened(false)
+                }
+            }
+        }
+        document.addEventListener("mouseup", handler)
+        return () => {
+            document.removeEventListener("mouseup", handler)
         }
     })
 
@@ -100,7 +121,7 @@ export default function Reservation() {
     //         }, 3000)
     //     }
     // }, [activeStep])
-    const [transferType, settransferType] = useState(0) // 0 = creditCard, 1= transfer
+    const [transferType, settransferType] = useState(1) // 0 = creditCard, 1= transfer
 
     const [isCitySelectionOpened, setisCitySelectionOpened] = useState(false)
 
@@ -178,7 +199,7 @@ export default function Reservation() {
 
         if (transferType == 1) {
             // rezervasyonu oluştur
-            
+
         }
         else {
             // kredi kartı ile ödeme doğrula ve ardından rezervasyonu oluştur
@@ -276,7 +297,8 @@ export default function Reservation() {
                                         address: "",
                                         note: "",
                                         city: "",
-                                        ilce: ""
+                                        ilce: "",
+                                        stateAreaClicked: false
                                     }}
                                     validationSchema={
                                         Yup.object({
@@ -294,7 +316,6 @@ export default function Reservation() {
                                     }
                                     onSubmit={(values) => {
                                         submitFormPerson(values)
-
                                     }}
                                 >
                                     {
@@ -350,19 +371,19 @@ export default function Reservation() {
                                                         <div className={styles.inputBox}>
                                                             <div className={styles.inputName}>İl</div>
                                                             {
-                                                                errors.city && (
+                                                                errors.city && touched.city && (
                                                                     <div className={styles.inputFeedback}>
                                                                         {errors.city}
                                                                     </div>
                                                                 )
                                                             }
-                                                            <span onClick={() => setisCitySelectionOpened(!isCitySelectionOpened)} className={`${styles['form_city']} ${isCitySelectionOpened ? styles['opened'] : ''}`}>
+                                                            <span ref={refOfCityMenu} onClick={() => setisCitySelectionOpened(!isCitySelectionOpened)} className={`${styles['form_city']} ${values.stateAreaClicked && styles['requareClick']} ${isCitySelectionOpened ? styles['opened'] : ''}`}>
                                                                 <span className={styles.selectedItem}>{values.city == '' ? 'İl Seçiniz' : values.city}</span>
                                                                 <span className={styles.selection_arrow}></span>
                                                                 {isCitySelectionOpened && (<div className={styles.cityDropMenu}>
                                                                     {
                                                                         citys?.map(city => (
-                                                                            <span key={city.il_adi} onClick={() => setFieldValue('city', city.il_adi)} className={styles.dropMenuItem}>{city.il_adi}</span>
+                                                                            <span key={city.il_adi} onClick={() => { setFieldValue('city', city.il_adi); setFieldValue('stateAreaClicked', false) }} className={styles.dropMenuItem}>{city.il_adi}</span>
                                                                         ))
                                                                     }
                                                                 </div>)}
@@ -379,7 +400,7 @@ export default function Reservation() {
                                                                     </div>
                                                                 )
                                                             }
-                                                            <span onClick={() => { if (values.city != "") { setisDistrictSelectionOpened(!isDistrictSelectionOpened) } }} className={`${styles['form_city']} ${isDistrictSelectionOpened ? styles['opened'] : ''}`}>
+                                                            <span ref={refOfStateMenu} onClick={() => { if (values.city != "") { setisDistrictSelectionOpened(!isDistrictSelectionOpened) } else { setFieldValue('stateAreaClicked', true) } }} className={`${styles['form_city']} ${isDistrictSelectionOpened ? styles['opened'] : ''}`}>
                                                                 <span className={styles.selectedItem}>{values.ilce == '' ? 'İlçe Seçiniz' : values.ilce}</span>
                                                                 <span className={styles.selection_arrow}></span>
                                                                 {isDistrictSelectionOpened && (<div className={styles.cityDropMenu}>
@@ -438,14 +459,14 @@ export default function Reservation() {
                                     <div className={styles.payment}>
                                         <div className={styles.paymentType}>
                                             <ul>
-                                                <li className={`${styles['creditCard']} ${transferType == 0 && styles['active']}`}>
-                                                    <Link onClick={(e) => { e.preventDefault(); settransferType(0) }} href="#">
+                                                <li className={`${styles['creditCard']}`}>
+                                                    <Link onClick={(e) => e.preventDefault()} href="#">
                                                         <div className={styles.imageBox}>
                                                             <i className={styles.creditCardIcon}></i>
                                                         </div>
                                                         <div className={styles.textBox}>
                                                             <div className={styles.title}>
-                                                                Kredi Kartı İle Ödeme
+                                                                Kredi Kartı İle Ödeme ( Yakında! )
                                                             </div>
                                                             <div className={styles.desc}>
                                                                 Bu rezervasyonun ödemesini kredi kartı ile gerçekleştirmek istiyorum.
