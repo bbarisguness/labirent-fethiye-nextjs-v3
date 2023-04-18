@@ -12,7 +12,7 @@ export default function Reservation() {
     const router = useRouter()
     const refOfCityMenu = useRef()
     const refOfStateMenu = useRef()
-    const [isPageLoading, setLoading] = useState(true)
+    // const [isPageLoading, setLoading] = useState(true)
     const [reservationItems, setreservationItems] = useState([])
     const [citys, setCitys] = useState(null)
     const [villa, setVilla] = useState([])
@@ -27,12 +27,12 @@ export default function Reservation() {
 
     //localstoragede ilgili veri yok ise geri anasayfaya yönlendirilir
     useEffect(() => {
-        if (!localStorage.getItem('reservationItems')) {
-            router.push("/")
-        }
-        else {
-            setLoading(false)
-        }
+        // if (!localStorage.getItem('reservationItems')) {
+        //     router.push("/")
+        // }
+        // else {
+        //     setLoading(false)
+        // }
 
         //Menülerin dışında bir yere tıklandığı zaman menülerin kapanması için
         let handler = (e) => {
@@ -54,61 +54,61 @@ export default function Reservation() {
         }
     })
 
-    useEffect(() => {
-        if (reservationItems.length != 0) {
-            //console.log(reservationItems)
-            //console.log(`Veriler local storageye eklendikten sonra geçen süre : ${Math.floor(new Date().getTime() / 1000) - reservationItems[0].expiryDate} saniye`)
+    // useEffect(() => {
+    //     if (reservationItems.length != 0) {
+    //         //console.log(reservationItems)
+    //         //console.log(`Veriler local storageye eklendikten sonra geçen süre : ${Math.floor(new Date().getTime() / 1000) - reservationItems[0].expiryDate} saniye`)
 
-            //1 saat sonra local storagedeki veriler otomatik olarak silinir ve anasayfaya yönlendirilir
-            if ((Math.floor(new Date().getTime() / 1000) - reservationItems[0].expiryDate) > 3600) {
-                localStorage.removeItem("reservationItems")
-                router.push("/")
-            }
+    //         //1 saat sonra local storagedeki veriler otomatik olarak silinir ve anasayfaya yönlendirilir
+    //         if ((Math.floor(new Date().getTime() / 1000) - reservationItems[0].expiryDate) > 3600) {
+    //             localStorage.removeItem("reservationItems")
+    //             router.push("/")
+    //         }
 
-            const query = qs.stringify(
-                {
-                    //populate: ["gallery.image", "categories", "distance_rulers", "price_tables.price_type", "regions", "localizations"]
-                    populate: {
-                        gallery: {
-                            populate: {
-                                image: {
-                                    //populate: "*"
-                                    //fields: ["url"],
-                                    populate: {
-                                        formats: {
-                                            populate: ["small", "thumbnail", "medium"]
-                                        }
-                                    },
-                                    sort: ["name:asc"]
-                                }
-                            }
-                        },
-                        regions: {
-                            fields: ["name"]
-                        }
-                    },
-                    fields: ["name"]
-                },
-                {
-                    encodeValuesOnly: true, // prettify URL
-                }
-            );
+    //         const query = qs.stringify(
+    //             {
+    //                 //populate: ["gallery.image", "categories", "distance_rulers", "price_tables.price_type", "regions", "localizations"]
+    //                 populate: {
+    //                     gallery: {
+    //                         populate: {
+    //                             image: {
+    //                                 //populate: "*"
+    //                                 //fields: ["url"],
+    //                                 populate: {
+    //                                     formats: {
+    //                                         populate: ["small", "thumbnail", "medium"]
+    //                                     }
+    //                                 },
+    //                                 sort: ["name:asc"]
+    //                             }
+    //                         }
+    //                     },
+    //                     regions: {
+    //                         fields: ["name"]
+    //                     }
+    //                 },
+    //                 fields: ["name"]
+    //             },
+    //             {
+    //                 encodeValuesOnly: true, // prettify URL
+    //             }
+    //         );
 
-            fetch(`http://3.127.136.179:1337/api/villas/${reservationItems[0].villaId}?${query}`)
-                .then(res => res.json())
-                .then(
-                    (result) => {
-                        setVilla(result.data)
-                        //console.log(result.data.attributes.distance_rulers.data)                            
-                        //console.log(result.data[0].attributes.gallery.data.attributes.image.data);
-                        //console.log(result.data.attributes.gallery.data.attributes.video);
-                    },
-                    (error) => {
+    //         fetch(`http://3.127.136.179:1337/api/villas/${reservationItems[0].villaId}?${query}`)
+    //             .then(res => res.json())
+    //             .then(
+    //                 (result) => {
+    //                     setVilla(result.data)
+    //                     //console.log(result.data.attributes.distance_rulers.data)                            
+    //                     //console.log(result.data[0].attributes.gallery.data.attributes.image.data);
+    //                     //console.log(result.data.attributes.gallery.data.attributes.video);
+    //                 },
+    //                 (error) => {
 
-                    }
-                )
-        }
-    }, [reservationItems])
+    //                 }
+    //             )
+    //     }
+    // }, [reservationItems])
 
 
 
@@ -221,13 +221,13 @@ export default function Reservation() {
         <section className={`${styles['contentDetail']}`}>
 
 
-            {isPageLoading && (<div className={"loadingBox"}>
+            {/* {isPageLoading && (<div className={"loadingBox"}>
                 <div className="loadingEffect">
                     <div className="loadingLogo">
                         <div className="loadingLogo" style={{ backgroundImage: "url(/images/labirent.png)" }}></div>
                     </div>
                 </div>
-            </div>)}
+            </div>)} */}
 
             <div className={styles.stepMenuBox}>
                 <div className={styles.container}>
@@ -621,7 +621,7 @@ export default function Reservation() {
                                     <li>
                                         <div className={styles.visitorNumberBox}>
                                             <div className={styles.visitorBox}>
-                                                <span>{reservationItems.length != 0 && `${reservationItems[0].numberOfAdults} Yetişkin, ${reservationItems[0].numberOfChild} Çocuk, ${reservationItems[0].numberOfBabies} Bebek`}</span>
+                                                {/* <span>{reservationItems.length != 0 && `${reservationItems[0].numberOfAdults} Yetişkin, ${reservationItems[0].numberOfChild} Çocuk, ${reservationItems[0].numberOfBabies} Bebek`}</span> */}
                                             </div>
                                             <div className={styles.changeButton}>
                                                 <Link onClick={(e) => e.preventDefault()} href="#">Değiştir</Link>
